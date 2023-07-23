@@ -1,0 +1,180 @@
+{
+    "rooms" : [
+        {
+            "roomId" : 1,
+            "title" : "산지미냐노, 이탈리아",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 2,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 3,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 4,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 5,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 6,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 7,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 8,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 9,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 10,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 11,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 12,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 13,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 14,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 15,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 16,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 17,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 18,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 19,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 20,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 21,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        },
+        {
+            "roomId" : 22,
+            "title" : "제목테스트",
+            "price" : 2000000,
+            "address" : "서울 중부 을지로",
+            "thumbnailImg" : "https://a.cdn-hotels.com/gdcs/production143/d584/9d0b3a81-4f8a-4f26-8aad-9c165dff75fa.jpg",
+            "isLike" : 0
+        }
+    ]
+}
