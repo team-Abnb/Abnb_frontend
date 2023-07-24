@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Main from "../pages/Main";
 import DetailPage from "../pages/DetailPage";
+import MainPage from "../pages/MainPage";
 
 export default function Router() {
     return (
@@ -9,7 +9,7 @@ export default function Router() {
             <Routes>
                 <Route
                     path="/"
-                    element={<Main />}
+                    element={<MainPage />}
                 />
                 <Route
                     path="/"

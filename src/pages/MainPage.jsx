@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import AccountForm from '../components/Detail/accountForm/AccountForm';
+import AccountForm from '../components/accountForm/AccountForm';
 
-function Main() {
+function MainPage() {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
 
@@ -38,4 +38,4 @@ function Main() {
     );
 }
 
-export default Main;
+export default MainPage;
