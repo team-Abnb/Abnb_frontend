@@ -336,7 +336,7 @@ export const OrderBox = styled.div`
 
     .orderbox {
         width: 75%;
-        height: 500px;
+        height: 460px;
         margin-left: 15.5%;
         border: 1px solid rgb(221, 221, 221);
         border-radius: 12px;
@@ -349,11 +349,15 @@ export const OrderBox = styled.div`
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 24px;
-
+        margin: 20px 0;
     }
     h1 {
         font-size: 22px;
+    }
+    p {
+        color: #717171;
+        text-decoration: underline;
+        font-size: 14px;
     }
 `;
 
@@ -362,14 +366,44 @@ export const InputBox = styled.div`
     height: 112px;
     border: 1px solid;
     border-radius: 8px;
+    color: #717171;
 
-
-    .date {
-        width: 100%;
-        height: 50%;
+    p {
+        text-align: center;
+        font-size: 14px;
+        margin: 8px 0;
+        color: #222222;
+    }
+    .orderInfos {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        color: #222222;
+
+        :first-child {
+            text-decoration: underline;
+        }
     }
+    .resultOrder {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 16px;
+        font-weight: 600;
+        margin-top: 16px;
+        border-top: 1px solid;
+        color: #222222;
+    }
+`;
+
+export const Data = styled.div`
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
     .startDate {
         width: 50%;
         border-bottom: 1px solid;
@@ -379,10 +413,19 @@ export const InputBox = styled.div`
         width: 50%;
         border-bottom: 1px solid;
     }
-    .people {
-        width: 100%;
-        height: 50%;
-    }
+`;
+
+export const People = styled.button`
+    width: 100%;
+    height: 50%;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
 `;
 
 export const OrderButton = styled.button`
@@ -392,5 +435,5 @@ export const OrderButton = styled.button`
     color: #ffffff;
     border: none;
     border-radius: 8px;
-    margin-top: 24px;
+    margin: 20px 0;
 `;
