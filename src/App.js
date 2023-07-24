@@ -1,11 +1,11 @@
 import React from 'react';
-import Main from './pages/Main';
-import Router from './shared/Router';
+import * as S from "./style/common/GlobalStyle";
+import Router from "./shared/Router";
 
-export default function App() {
+function App() {
     return (
-        <>
+        <S.GlobalStyle>
             <Router />
-        </>
+        </S.GlobalStyle>
     );
 }
