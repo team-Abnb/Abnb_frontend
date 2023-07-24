@@ -1,6 +1,6 @@
 import React from "react";
 import { FiShare } from "react-icons/fi";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
+import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
 import { BsTranslate } from "react-icons/bs";
 
 import * as S from "../../style/Detail/DetailPage";
@@ -15,6 +15,10 @@ function Title() {
                 </h1>
                 <div>
                     <S.Info>
+                        <p>
+                            <AiFillStar />
+                        </p>
+                        <p>4.7</p>
                         <p>후기 1개</p>
                         <p>Clackmannanshire, 스코틀랜드, 영국</p>
                     </S.Info>
