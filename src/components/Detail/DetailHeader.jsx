@@ -1,5 +1,5 @@
-import React from "react";
-import * as S from "../../style/Detail/DetailPage";
+import React from 'react';
+import * as S from '../../style/Detail/DetailPage';
 
 function DetailHeader() {
     return (

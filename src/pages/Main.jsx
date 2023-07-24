@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AccountForm from '../component/accountForm/AccountForm';
+import AccountForm from '../components/Detail/accountForm/AccountForm';
 
 function Main() {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
