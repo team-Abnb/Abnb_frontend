@@ -8,13 +8,12 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import UserIcon from "./UserIcon";
 import UserMenuIcon from "./UserMenuIcon";
-// import SignUp from '../../signup/SignUp';
-// import Login from '../../login/Login';
+import SignUp from "../../signup/SignUp";
+import Login from "../../login/Login";
 import { initPage, initRooms } from "../../../redux/modules/roomSlice";
-// import { setSignUpOpen, setAnchorEl, setLoginOpen } from '../../../redux/modules/modalSlice';
+import { setSignUpOpen, setAnchorEl, setLoginOpen } from "../../../redux/modules/modalSlice";
 
 function UserInfo() {
-    // eslint-disable-next-line no-shadow
     const [signUpOpen, setSignUpOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -78,8 +77,14 @@ function UserInfo() {
                     <MenuItem onClick={() => handleSignUpOpen()}>회원가입</MenuItem>
                 </Menu>
             </StUserInfoDiv>
-            {/* <SignUp open={signUpOpen} handleClose={() => handleSignUpClose()} /> */}
-            {/* <Login open={loginOpen} handleClose={() => handleLoginClose()} /> */}
+            <SignUp
+                open={signUpOpen}
+                handleClose={() => handleSignUpClose()}
+            />
+            <Login
+                open={loginOpen}
+                handleClose={() => handleLoginClose()}
+            />
         </>
     );
 }

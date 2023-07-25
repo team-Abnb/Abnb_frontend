@@ -9,9 +9,9 @@ function TopbarRight() {
         <S.Wrappers>
             <S.Nav>
                 <S.Link>
-                    <S.yledLink to="/api/rooms/main">
+                    <Link to="/api/rooms/main">
                         <S.Text>당신의 공간을 에어비앤비하세요</S.Text>
-                    </S.yledLink>
+                    </Link>
                 </S.Link>
                 <S.IconBtn>
                     <S.IconWrapper>

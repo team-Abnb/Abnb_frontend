@@ -254,6 +254,16 @@ export const Text = styled.div`
     height: 100%;
     position: relative;
     z-index: 1;
+    text-decoration: none;
+    color: #222222;
+    &:focus,
+    &:hover,
+    &:visited,
+    &:link,
+    &:active {
+        color: #222222;
+        text-decoration: none;
+    }
 `;
 
 export const IconWrapper = styled.div`
@@ -273,17 +283,6 @@ export const IconBtn = styled.button`
     margin-right: 8px;
     text-align: inherit;
     padding: 12px;
-`;
-export const yledLink = styled(Link)`
-    text-decoration: none;
-    &:focus,
-    &:hover,
-    &:visited,
-    &:link,
-    &:active {
-        color: #222222;
-        text-decoration: none;
-    }
 `;
 
 // RoomType.jsx
@@ -368,3 +367,25 @@ export const FilterBtn = styled.button`
     color: #222222;
 `;
 
+// RoomCard.jsx
+export const RoomCards = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1278px;
+    margin: auto;
+`;
+
+export const RoomCard = styled.div`
+    width: 300px;
+    height: 390px;
+    padding: 8px;
+    /* margin: ; */
+    img {
+        width: 100%;
+        height: 286px;
+        border-radius: 8px;
+    }
+    p {
+        color: #222222;
+    }
+`;
