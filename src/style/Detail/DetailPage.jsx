@@ -331,11 +331,6 @@ export const Comment = styled.div`
         content: "...";
     }
 
-    div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
     .moreInfo {
         margin: 10px 0;
         text-decoration: underline;

@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import * as S from "../../style/Detail/DetailPage";
 import { IoIosArrowForward } from "react-icons/io";
 import UserProfile from "./UserProfile";
+import CommentListModal from "../common/Modal/CommentListModal";
 
 function Comment() {
+    const [commentModal, setCommentModal] = useState(false);
+
+    const CommentClickHandler = () => {
+        setCommentModal(true);
+        document.body.style.overflow = "hidden";
+    };
     return (
         <S.Comment>
             <UserProfile />
@@ -12,9 +19,13 @@ function Comment() {
                 숙소였습니다. 침대도 편했고 주방도 잘 갖추어져 있었습니다. 계단이 많아 문제가 되지 않았지만 이동에 문제가 있는 경우 문제가
                 될 수 있습니다. 부지도 멋진 곳이었습니다. 이 지역을 둘러보려면 자동차가 필요합니다. 이 독특한 숙소를 강추합니다!
             </p>
-            <div className="moreInfo">
+            <div
+                className="moreInfo"
+                onClick={CommentClickHandler}
+            >
                 더보기
                 <IoIosArrowForward />
+                {commentModal && <CommentListModal setCommentModal={setCommentModal} />}
             </div>
         </S.Comment>
     );

@@ -20,7 +20,7 @@ function DetailHeader() {
         width: "100vw",
         height: "80px",
         backgroundColor: "#ffffff",
-        borderBottom: "1px solid black",
+        borderBottom: "1px solid #ebebeb",
         position: "fixed",
         zIndex: "990",
         transition: "5s",
