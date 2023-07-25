@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import * as S from "../../style/Detail/DetailPage";
 
