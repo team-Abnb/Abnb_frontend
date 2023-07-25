@@ -1,20 +1,12 @@
 import React from "react";
 import * as S from "../../style/Detail/DetailPage";
 import { IoIosArrowForward } from "react-icons/io";
+import UserProfile from "./UserProfile";
 
 function Comment() {
     return (
         <S.Comment>
-            <div className="userProfile">
-                <img
-                    src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                    alt="프로필 사진"
-                />
-                <div>
-                    <h3>Diane</h3>
-                    <p>2023년 5월</p>
-                </div>
-            </div>
+            <UserProfile />
             <p className="overflow">
                 성에서 멋진 시간을 보냈습니다. 폴의 숙소는 심지어 사진보다 더 좋았습니다. 스코틀랜드에서 가족 휴가를 보내기에 완벽한
                 숙소였습니다. 침대도 편했고 주방도 잘 갖추어져 있었습니다. 계단이 많아 문제가 되지 않았지만 이동에 문제가 있는 경우 문제가

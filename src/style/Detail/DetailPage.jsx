@@ -242,7 +242,6 @@ export const PlaceInfo = styled.div`
 // Amenities.jsx
 export const Amenities = styled.div`
     padding: 24px 0 24px 0;
-    border-bottom: 1px solid #ebebeb;
 
     h1 {
         font-size: 22px;
@@ -271,6 +270,7 @@ export const Amenity = styled.div`
 // Reservation.jsx
 export const Reservation = styled.div`
     padding: 24px 0;
+    border-top: 1px solid #ebebeb;
 `;
 
 // CommentsBox.jsx
@@ -284,34 +284,30 @@ export const CommentsBox = styled.div`
     }
 `;
 
+export const CommentLists = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`;
+
+export const CommentButton = styled.button`
+    font-size: 16px;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    padding: 13px 23px;
+    color: #222222;
+    background-color: #ffffff;
+    cursor: pointer;
+`;
+
 // Comment.jsx
 export const Comment = styled.div`
     width: 40%;
     padding-right: 10%;
     margin: 0 0 16px;
-    .userProfile {
-        display: flex;
-        flex-direction: row;
-        div {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        img {
-            width: 40px;
-            height: 40px;
-            border-radius: 100%;
-            margin-right: 16px;
-        }
-        h3 {
-            font-size: 16px;
-        }
-        p {
-            font-size: 14px;
-            color: #717171;
-        }
+    p {
+        font-size: 14px;
+        color: #717171;
     }
-
     .overflow {
         color: #000;
         display: -webkit-box;
@@ -327,6 +323,25 @@ export const Comment = styled.div`
         display: flex;
         flex-direction: row;
         align-items: center;
+    }
+`;
+
+export const UserProfiles = styled.div`
+    display: flex;
+    flex-direction: row;
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        margin-right: 16px;
+    }
+    h3 {
+        font-size: 16px;
     }
 `;
 

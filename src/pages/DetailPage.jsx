@@ -19,6 +19,7 @@ function DetailPage() {
                     <OrderBox />
                 </div>
                 <CommentsBox />
+                
             </S.DetailPage>
         </>
     );

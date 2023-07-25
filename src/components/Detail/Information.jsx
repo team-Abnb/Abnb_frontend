@@ -52,7 +52,7 @@ function Information() {
                 </div>
             </S.PlaceInfo>
             <Amenities />
-            <Reservation />
+            {/* <Reservation /> */}
         </S.Information>
     );
 }
