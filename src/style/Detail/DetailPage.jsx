@@ -457,6 +457,37 @@ export const People = styled.button`
     background-color: #ffffff;
 `;
 
+// ChoosePeople.jsx
+export const ChoosePeople = styled.div`
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+    box-sizing: border-boxt;
+    min-width: 280px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    padding: 15% 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    button {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        border: 2px solid #ebebebeb;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #ebebeb;
+    }
+    div {
+        font-size: 40px;
+    }
+`;
+
 export const OrderButton = styled.button`
     width: 100%;
     height: 48px;
