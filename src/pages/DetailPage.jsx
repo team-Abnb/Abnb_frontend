@@ -6,6 +6,7 @@ import ImageLists from "../components/Detail/ImageLists";
 import Information from "../components/Detail/Information";
 import CommentsBox from "../components/Detail/CommentsBox";
 import OrderBox from "../components/Detail/OrderBox";
+import PlaceLocation from "../components/Detail/PlaceLocation";
 
 function DetailPage() {
     return (
@@ -19,7 +20,7 @@ function DetailPage() {
                     <OrderBox />
                 </div>
                 <CommentsBox />
-                
+                <PlaceLocation />
             </S.DetailPage>
         </>
     );
