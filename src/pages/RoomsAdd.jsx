@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import ImageUpload from '../components/post/ImageFile/ImageUpload';
 import { createRoom } from '../redux/modules/roomSlice';
 import Topbar from '../components/main/Topbar';
 
-export default function RoomsAdd(isLogin) {
+export default function RoomsAdd() {
     // 값을 담을 두 공간 필요 1. 제목 2. 내용
     // 따라서 2개의 useState가 필요 현재 상태를 저장하고
     // 변경할 수 있다.
@@ -15,54 +15,44 @@ export default function RoomsAdd(isLogin) {
     const navigate = useNavigate();
     // selectList
     const selectList = ['house', 'Apartment', 'hotel'];
-    const [rooms, setRooms] = useState({
+    const placeList = ['멋진수영장', '한옥', '열대지역', '인기급상승', '캐슬'];
+
+    const initialRoomState = {
         title: '',
         description: '',
         price: 0,
         address: '',
         type: '',
-    });
+        place: '',
+    };
+
+    const [rooms, setRooms] = useState(initialRoomState);
     const [imageFile, setImageFile] = useState(null);
     console.log('ImageFile', imageFile);
-    useEffect(() => {
-        console.log(imageFile);
-    }, [imageFile]);
+    console.log('Rooms', rooms);
+    const imageCount = imageFile.length;
 
     // StInput값
     const onChangeHandler = e => {
         const { name, value } = e.target;
-        setRooms({ ...rooms, [name]: value });
+        setRooms(prevRooms => ({ ...prevRooms, [name]: value }));
     };
     // 추가하기 버튼
     const onSumitHandler = e => {
-        if (
-            rooms.title.trim() === '' ||
-            rooms.description.trim() === '' ||
-            rooms.price.trim() === '' ||
-            rooms.address.trim() === ''
-        ) {
+        if (Object.values(rooms).some(value => value.trim() === '') && imageCount >= 2) {
             return alert('모든 항목을 입력해주세요.');
         }
         dispatch(
             createRoom({
                 room: {
-                    title: rooms.title,
-                    description: rooms.description,
-                    price: rooms.price * 1,
-                    address: rooms.address,
-                    type: rooms.type,
+                    ...rooms,
+                    price: parseFloat(rooms.price),
                 },
                 imageFile,
             }),
         );
         navigate(`/`);
-        setRooms({
-            title: '',
-            description: '',
-            price: 0,
-            address: '',
-            type: '',
-        });
+        setRooms(initialRoomState);
     };
 
     return (
@@ -145,6 +135,26 @@ export default function RoomsAdd(isLogin) {
                 </StBorder>
 
                 <br />
+
+                <StBorder>
+                    <StSpanBar>테마</StSpanBar>
+                    <StSelect
+                        type=""
+                        value={rooms.place}
+                        onChange={e => {
+                            setRooms({ ...rooms, place: e.target.value });
+                            console.log(e.target.value);
+                        }}
+                    >
+                        {placeList.map(t => (
+                            <option value={t} key={t}>
+                                {t}
+                            </option>
+                        ))}
+                    </StSelect>
+                </StBorder>
+                <br />
+
                 <StSubmitBtn
                     type="button"
                     className="btn btn-primary"
