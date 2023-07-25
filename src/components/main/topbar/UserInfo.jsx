@@ -1,16 +1,16 @@
 /* eslint-disable no-shadow */
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { Divider } from '@mui/material';
-import { useCookies } from 'react-cookie';
-import { useDispatch } from 'react-redux';
-import UserIcon from './UserIcon';
-import UserMenuIcon from './UserMenuIcon';
-import SignUp from '../../signup/SignUp';
-import Login from '../../login/Login';
-import { initPage, initRooms } from '../../../redux/modules/roomSlice';
+import React, { useState } from "react";
+import styled from "styled-components";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Divider } from "@mui/material";
+import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import UserIcon from "./UserIcon";
+import UserMenuIcon from "./UserMenuIcon";
+// import SignUp from '../../signup/SignUp';
+// import Login from '../../login/Login';
+import { initPage, initRooms } from "../../../redux/modules/roomSlice";
 // import { setSignUpOpen, setAnchorEl, setLoginOpen } from '../../../redux/modules/modalSlice';
 
 function UserInfo() {
@@ -20,7 +20,7 @@ function UserInfo() {
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const dispatch = useDispatch();
-    const [cookies, removeCookies] = useCookies(['accessToken']);
+    const [cookies, removeCookies] = useCookies(["accessToken"]);
     const open = Boolean(anchorEl);
 
     function handleSignUpOpen() {
@@ -37,14 +37,14 @@ function UserInfo() {
     function handleLoginClose() {
         setLoginOpen(false);
     }
-    const handleClick = event => {
+    const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
     function logout() {
-        removeCookies('accessToken');
+        removeCookies("accessToken");
         handleClose();
         dispatch(initRooms());
         dispatch(initPage());
@@ -54,10 +54,10 @@ function UserInfo() {
             <StUserInfoDiv>
                 <StUserInfoBtn
                     id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-controls={open ? "basic-menu" : undefined}
                     aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={event => handleClick(event)}
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={(event) => handleClick(event)}
                 >
                     <UserMenuIcon />
                     <UserIcon />
@@ -68,18 +68,18 @@ function UserInfo() {
                     open={open}
                     onClose={handleClose}
                     MenuListProps={{
-                        'aria-labelledby': 'basic-button',
+                        "aria-labelledby": "basic-button",
                     }}
                 >
                     <MenuItem onClick={cookies.accessToken ? () => logout() : () => handleLoginOpen()}>
-                        {cookies.accessToken ? '로그아웃' : '로그인'}
+                        {cookies.accessToken ? "로그아웃" : "로그인"}
                     </MenuItem>
                     <Divider />
                     <MenuItem onClick={() => handleSignUpOpen()}>회원가입</MenuItem>
                 </Menu>
             </StUserInfoDiv>
-            <SignUp open={signUpOpen} handleClose={() => handleSignUpClose()} />
-            <Login open={loginOpen} handleClose={() => handleLoginClose()} />
+            {/* <SignUp open={signUpOpen} handleClose={() => handleSignUpClose()} /> */}
+            {/* <Login open={loginOpen} handleClose={() => handleLoginClose()} /> */}
         </>
     );
 }
