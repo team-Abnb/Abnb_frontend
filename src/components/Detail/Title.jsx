@@ -10,7 +10,7 @@ function Title() {
         <>
             <S.Title>
                 <h1>
-                    <BsTranslate />
+                    <BsTranslate style={{ marginRight: "10px" }} />
                     DOLLARBEG CASTLE - The Tower - 럭셔리 3베드 대여
                 </h1>
                 <div>

@@ -1,8 +1,17 @@
-import React from "react";
+import { useState } from "react";
 import { CgMenuGridO } from "react-icons/cg";
 import * as S from "../../style/Detail/DetailPage";
+import ImageListModal from "../common/Modal/ImageListModal";
 
 function ImageLists() {
+    const [imageModal, setImageModal] = useState(false);
+
+    const ImageClickHandler = () => {
+        setImageModal(true);
+        document.body.style.overflow = "hidden";
+
+    };
+
     return (
         <>
             <S.ImageLists>
@@ -21,9 +30,10 @@ function ImageLists() {
                         className="lastImage"
                     />
                     <div class="lastOverlay"></div>
-                    <S.Button>
+                    <S.Button onClick={ImageClickHandler}>
                         <CgMenuGridO /> 사진 모두 보기
                     </S.Button>
+                    {imageModal && <ImageListModal setImageModal={setImageModal} />}
                 </S.ImageContainer>
             </S.ImageLists>
         </>
