@@ -46,13 +46,13 @@ function Information() {
                     독특하고 유서 깊은 달러베그 성의 타워 아파트는 완전히 새롭게 단장되었으며 고급 가구와 함께 높은 수준으로 선보입니다.
                     여러 개의 방에 있는 포탑 코너와 모든 창문에서 탁월한 전망을 감상할 수 있어 전체적으로 훌륭한 특성을 유지하고 있습니다...
                 </p>
-                <div>
-                    더보기
+                <div className="moreInfo">
+                    더 보기
                     <IoIosArrowForward />
                 </div>
             </S.PlaceInfo>
             <Amenities />
-            <Reservation />
+            {/* <Reservation /> */}
         </S.Information>
     );
 }

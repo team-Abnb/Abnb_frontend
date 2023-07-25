@@ -1,8 +1,41 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import * as S from "../../style/Detail/DetailPage";
 import { BsChevronDown } from "react-icons/bs";
+import ChoosePeople from "./ChoosePeople";
+import { StartDatePicker, FinishReactDatePicker } from "./DatePicker";
 
 function OrderBox() {
+    const [chooseBox, setChooseBox] = useState(false);
+    const [scrollPosition, setScrollPosition] = useState(622);
+    const [countPeople, setCountPeople] = useState(1);
+
+    const [startDate, setStartDate] = useState(new Date());
+    const [finishDate, setFinishDate] = useState(new Date());
+
+    useEffect(() => {
+        const today = new Date();
+        if (finishDate.getTime() < startDate.getTime()) {
+            alert("finishDate는 startDate보다 이전 날짜일 수 없습니다.");
+            setStartDate(today);
+            setFinishDate(today);
+        }
+    }, [startDate, finishDate]);
+
+    const showList = () => {
+        setChooseBox(!chooseBox);
+    };
+    const updateScroll = () => {
+        setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", updateScroll);
+
+        return () => {
+            window.removeEventListener("scroll", updateScroll);
+        };
+    }, []);
+
     return (
         <S.OrderBox>
             <div className="orderbox">
@@ -12,15 +45,31 @@ function OrderBox() {
                 </div>
                 <S.InputBox>
                     <S.Data>
-                        <div className="startDate"></div>
-                        <div className="finishDate"></div>
+                        <div className="startDate">
+                            <StartDatePicker
+                                startDate={startDate}
+                                setStartDate={setStartDate}
+                            />
+                        </div>
+                        <div className="finishDate">
+                            <FinishReactDatePicker
+                                finishDate={finishDate}
+                                setFinishDate={setFinishDate}
+                            />
+                        </div>
                     </S.Data>
-                    <S.People>
-                        <div>인원</div>
+                    <S.People onClick={showList}>
+                        <div>게스트 {countPeople}명</div>
                         <div>
                             <BsChevronDown />
                         </div>
                     </S.People>
+                    {chooseBox && (
+                        <ChoosePeople
+                            countPeople={countPeople}
+                            setCountPeople={setCountPeople}
+                        />
+                    )}
                     <S.OrderButton>예약하기</S.OrderButton>
                     <p>예약 확정 전에는 요금이 청구되지 않습니다.</p>
                     <div className="orderInfos">
