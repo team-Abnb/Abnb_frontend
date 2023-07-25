@@ -30,7 +30,7 @@ export default function RoomsAdd() {
     const [imageFile, setImageFile] = useState(null);
     console.log('ImageFile', imageFile);
     console.log('Rooms', rooms);
-    const imageCount = imageFile.length;
+    const imageCount = imageFile;
 
     // StInput값
     const onChangeHandler = e => {
