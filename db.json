@@ -1,0 +1,29 @@
+{
+    "comm": [
+        {
+            "name": "13414134",
+            "isClicked": false,
+            "id": 1
+        },
+        {
+            "name": "222232",
+            "isClicked": false,
+            "id": 2
+        },
+        {
+            "name": "ㅎㅎㅎㅎ",
+            "isClicked": false,
+            "id": 3
+        }
+    ],
+    "rooms": [
+        {
+            "title": "제목",
+            "description": "내용",
+            "price": "150000",
+            "address": "성수동",
+            "type": "hotel",
+            "userId": 1
+        }
+    ]
+}
