@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { TextField, Box, Modal, IconButton, Grid } from '@mui/material';
 import styled from 'styled-components';
 import CloseIcon from '@mui/icons-material/Close';
@@ -26,6 +26,8 @@ function AccountForm({ open, isLogin, handleClose }) {
     const [password, setPassword] = useState('');
     const [confirmPwd, setconfirmPwd] = useState('');
     const [modal, setModal] = useState(false);
+    const [pwdMsg, setPwdMsg] = useState('');
+    const [confirmPwdMsg, setConfirmPwdMsg] = useState('');
 
     const passwordCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
     const emailCheck =
@@ -41,25 +43,31 @@ function AccountForm({ open, isLogin, handleClose }) {
     function onEmailChangeHandler(event) {
         setEmail(event.target.value);
         setCheckEmail(false);
+        setDisable(false);
         dispatch(clearEmailDuplicate());
+    }
+
+    function onLoginHandler() {
+        handleClose();
+        const account = {
+            email,
+            password,
+        };
+        dispatch(login({ ...account, setCookie }));
+        setEmail('');
+        setPassword('');
     }
 
     function onNicknameChangeHandler(event) {
         setNickName(event.target.value);
         setCheckNick(false);
+        setDisable(false);
         dispatch(clearNickDuplicate());
     }
 
-    const onPasswordChangeHandler = useCallback(e => {
-        const currPwd = e.target.value;
-        setPassword(currPwd);
-        if (!passwordCheck.test(password)) {
-            alert('올바른 형식의 비밀번호여야 합니다.');
-            return;
-        } else {
-            setPwdMsg('안전한 비밀번호입니다.');
-        }
-    }, []);
+    function onPasswordChangeHandler(event) {
+        setPassword(event.target.value);
+    }
 
     function onCheckEmail(CheckEmail) {
         if (!emailCheck.test(email)) {
@@ -68,10 +76,10 @@ function AccountForm({ open, isLogin, handleClose }) {
             return;
         }
         dispatch(checkDuplicationEmail(email));
-        if (checkNick === false) {
-            alert('이미 사용중인 닉네임입니다.');
+        if (checkEmail === true) {
+            alert('이미 사용중인 이메일입니다.');
         } else {
-            alert('사용사능한 닉네임입니다.');
+            alert('사용가능한 이메일입니다.');
         }
     }
 
@@ -82,29 +90,34 @@ function AccountForm({ open, isLogin, handleClose }) {
             return;
         }
         dispatch(checkDuplicationNickname(nickname));
-        if (checkNick === false) {
+        if (checkNick === true) {
             alert('이미 사용중인 닉네임입니다.');
         } else {
-            alert('사용사능한 닉네임입니다.');
+            alert('사용가능한 닉네임입니다.');
         }
     }
 
     const onChangeConfirmPwd = useCallback(
         e => {
             const currConfirmPwd = e.target.value;
-            SetconfirmPwd(currConfirmPwd);
+            setconfirmPwd(currConfirmPwd);
 
             if (currConfirmPwd !== password) {
                 setConfirmPwdMsg('비밀번호가 일치하지 않습니다.');
             } else {
                 setConfirmPwdMsg('올바른 비밀번호입니다.');
             }
+            setDisable(false);
         },
         [password],
     );
 
     function onSubmitHandler() {
-        alert('회원가입 되었습니다.');
+        if (!passwordCheck.test(password)) {
+            alert('올바른 형식의 비밀번호여야 합니다.');
+        } else {
+            alert('회원가입 되었습니다.');
+        }
         const account = {
             email,
             nickname,
@@ -115,6 +128,7 @@ function AccountForm({ open, isLogin, handleClose }) {
         setEmail('');
         setPassword('');
         setNickName('');
+        setconfirmPwd('');
         handleClose();
     }
 
@@ -191,19 +205,22 @@ function AccountForm({ open, isLogin, handleClose }) {
                             }
                             onChange={event => onPasswordChangeHandler(event)}
                         />
-                        <TextField
-                            fullWidth
-                            id="outlined-basic"
-                            label="비밀번호 확인"
-                            variant="outlined"
-                            type="password"
-                            value={password}
-                            onChange={event => onChangeConfirmPwd(event)}
-                        />
+                        {isLogin ? null : (
+                            <TextField
+                                fullWidth
+                                id="outlined-basic"
+                                label="비밀번호 확인"
+                                variant="outlined"
+                                type="password"
+                                value={confirmPwd}
+                                onChange={event => onChangeConfirmPwd(event)}
+                                helperText={confirmPwdMsg}
+                            />
+                        )}
                     </StDivBox>
                     <StBtn
                         disabled={isLogin ? false : disable}
-                        onClick={isLogin ? () => alert('이미 가입 된 회원입니다.') : () => onSubmitHandler()}
+                        onClick={isLogin ? () => onLoginHandler() : () => onSubmitHandler()}
                     >
                         계속
                     </StBtn>

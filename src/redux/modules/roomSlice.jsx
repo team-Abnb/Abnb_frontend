@@ -9,6 +9,7 @@ const initialState = {
         price: 0,
         address: '',
         type: '',
+        place: '',
         userId: 0,
         likeCheck: false,
     },
@@ -53,7 +54,7 @@ export const readRooms = createAsyncThunk('room/READ_ROOMS', async (payload, thu
 export const readRoom = createAsyncThunk('room/READ_ROOMS', async (payload, thunkAPI) => {
     try {
         console.log('payload', payload);
-        const response = await baseURL.get(`/rooms/main`);
+        const response = await baseURL.get(`/`);
         return thunkAPI.fulfillWithValue(response.data);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
