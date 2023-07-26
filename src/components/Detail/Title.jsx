@@ -1,9 +1,11 @@
 import React from "react";
 import { FiShare } from "react-icons/fi";
-import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { BsTranslate } from "react-icons/bs";
 
 import * as S from "../../style/Detail/DetailPage";
+
+import LikeButton from "../common/LikeButton/LikeButton";
 
 function Title() {
     return (
@@ -27,9 +29,10 @@ function Title() {
                             <FiShare />
                             공유하기
                         </p>
-                        <AiFillHeart className="fullHeart" />
-                        <AiOutlineHeart />
-                        저장
+                        <p>
+                            <LikeButton />
+                            저장
+                        </p>
                     </S.Share>
                 </div>
             </S.Title>

@@ -50,11 +50,15 @@ export const Title = styled.div`
     }
 `;
 
-export const Info = styled.div``;
+export const Info = styled.div`
+    p {
+        margin-right: 5px;
+    }
+`;
 
 export const Share = styled.div`
-    .fullHeart {
-        color: red;
+    p {
+        margin-right: 5px;
     }
 `;
 
@@ -517,4 +521,10 @@ export const PlaceLocation = styled.div`
     p {
         font-size: 16px;
     }
+`;
+
+// DatePicker.jsx
+export const DatePicker = styled.div`
+    font-size: 30px;
+    margin-left: 10px;
 `;

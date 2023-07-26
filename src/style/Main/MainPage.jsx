@@ -380,12 +380,28 @@ export const RoomCard = styled.div`
     height: 390px;
     padding: 8px;
     /* margin: ; */
+
+    h3 {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    p {
+        color: #717171;
+    }
+`;
+
+export const RoomsImage = styled.div`
     img {
         width: 100%;
         height: 286px;
         border-radius: 8px;
     }
-    p {
-        color: #222222;
+    span {
+        cursor: pointer;
+        position: relative;
+        bottom: 270px;
+        left: 260px;
+        transform: translate(50%, 50%);
+        z-index: 1;
     }
 `;
