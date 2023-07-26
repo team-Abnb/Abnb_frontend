@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // Topbar.jsx
 export const Div = styled.div`
@@ -222,8 +223,19 @@ export const Nav = styled.nav`
     justify-content: flex-end !important;
     height: 80px !important;
 `;
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    &:focus,
+    &:hover,
+    &:visited,
+    &:link,
+    &:active {
+        color: #222222;
+        text-decoration: none;
+    }
+`;
 
-export const Link = styled.div`
+export const StLink = styled.div`
     background: transparent;
     border: 0;
     cursor: pointer;
@@ -254,7 +266,7 @@ export const Text = styled.div`
     height: 100%;
     position: relative;
     z-index: 1;
-    text-decoration: none;
+    // text-decoration: none;
     color: #222222;
     &:focus,
     &:hover,
@@ -262,7 +274,7 @@ export const Text = styled.div`
     &:link,
     &:active {
         color: #222222;
-        text-decoration: none;
+        //text-decoration: none;
     }
 `;
 
