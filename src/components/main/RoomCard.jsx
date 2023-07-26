@@ -1,6 +1,5 @@
-
-import React from "react";
-import * as S from "../../style/Main/MainPage";
+import React from 'react';
+import * as S from '../../style/Main/MainPage';
 
 function RoomCard() {
     return (
@@ -70,7 +69,6 @@ function RoomCard() {
             </S.RoomCard>
         </S.RoomCards>
     );
-
 }
 
 export default RoomCard;

@@ -1,22 +1,21 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { TextField, Box, Modal, IconButton, Grid } from '@mui/material';
-import styled from 'styled-components';
+import { TextField, Modal, Grid } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { useDispatch, useSelector } from 'react-redux';
-import { useCookies, setCookie, cookies } from 'react-cookie';
-import {
-    signUp,
-    login,
-    clearEmailDuplicate,
-    clearNickDuplicate,
-    clearDuplicate,
-    checkDuplicationEmail,
-    checkDuplicationNickname,
-} from '../../redux/modules/loginSlice';
-import { initPage, initRooms } from '../../redux/modules/roomSlice';
+import * as S from '../../style/Account/Account';
+// import { useCookies, setCookie, cookies } from 'react-cookie';
+// import {
+//     signUp,
+//     login,
+//     clearEmailDuplicate,
+//     clearNickDuplicate,
+//     clearDuplicate,
+//     checkDuplicationEmail,
+//     checkDuplicationNickname,
+// } from '../../redux/modules/loginSlice';
+// import { initPage, initRooms } from '../../redux/modules/roomSlice';
 
 function AccountForm({ open, isLogin, handleClose }) {
-    const duplicate = useSelector(state => state.login.duplicate);
+    // const duplicate = useSelector(state => state.login.duplicate);
     const [checkEmail, setCheckEmail] = useState(false);
     const [checkNick, setCheckNick] = useState(false);
     const [disable, setDisable] = useState(true);
@@ -26,7 +25,7 @@ function AccountForm({ open, isLogin, handleClose }) {
     const [password, setPassword] = useState('');
     const [confirmPwd, setconfirmPwd] = useState('');
     const [modal, setModal] = useState(false);
-    const [pwdMsg, setPwdMsg] = useState('');
+    // const [pwdMsg, setPwdMsg] = useState('');
     const [confirmPwdMsg, setConfirmPwdMsg] = useState('');
 
     const passwordCheck = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/;
@@ -38,13 +37,14 @@ function AccountForm({ open, isLogin, handleClose }) {
         contentInput.current.value = '';
     };
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     function onEmailChangeHandler(event) {
-        setEmail(event.target.value);
+        const CurrEmail = event.target.value;
+        setEmail(CurrEmail);
         setCheckEmail(false);
         setDisable(false);
-        dispatch(clearEmailDuplicate());
+        // dispatch(clearEmailDuplicate());
     }
 
     function onLoginHandler() {
@@ -53,7 +53,7 @@ function AccountForm({ open, isLogin, handleClose }) {
             email,
             password,
         };
-        dispatch(login({ ...account, setCookie }));
+        //  dispatch(login({ ...account, setCookie }));
         setEmail('');
         setPassword('');
     }
@@ -62,7 +62,7 @@ function AccountForm({ open, isLogin, handleClose }) {
         setNickName(event.target.value);
         setCheckNick(false);
         setDisable(false);
-        dispatch(clearNickDuplicate());
+        // dispatch(clearNickDuplicate());
     }
 
     function onPasswordChangeHandler(event) {
@@ -72,10 +72,10 @@ function AccountForm({ open, isLogin, handleClose }) {
     function onCheckEmail(CheckEmail) {
         if (!emailCheck.test(email)) {
             alert('올바른 형식의 이메일 주소여야 합니다.');
-            dispatch(clearEmailDuplicate());
+            // dispatch(clearEmailDuplicate());
             return;
         }
-        dispatch(checkDuplicationEmail(email));
+        // dispatch(checkDuplicationEmail(email));
         if (checkEmail === true) {
             alert('이미 사용중인 이메일입니다.');
         } else {
@@ -86,10 +86,10 @@ function AccountForm({ open, isLogin, handleClose }) {
     function onCheckNick(checkNick) {
         if (nickname === '') {
             alert('닉네임은 필수 입력 값입니다.');
-            dispatch(clearEmailDuplicate());
+            // dispatch(clearEmailDuplicate());
             return;
         }
-        dispatch(checkDuplicationNickname(nickname));
+        // dispatch(checkDuplicationNickname(nickname));
         if (checkNick === true) {
             alert('이미 사용중인 닉네임입니다.');
         } else {
@@ -123,8 +123,8 @@ function AccountForm({ open, isLogin, handleClose }) {
             nickname,
             password,
         };
-        dispatch(signUp(account));
-        dispatch(clearDuplicate());
+        // dispatch(signUp(account));
+        // dispatch(clearDuplicate());
         setEmail('');
         setPassword('');
         setNickName('');
@@ -132,16 +132,16 @@ function AccountForm({ open, isLogin, handleClose }) {
         handleClose();
     }
 
-    useEffect(() => {
-        dispatch(initRooms());
-        dispatch(initPage());
-    }, [cookies]);
+    // useEffect(() => {
+    //     dispatch(initRooms());
+    //     dispatch(initPage());
+    // }, [cookies]);
 
-    useEffect(() => {
-        setCheckEmail(!duplicate.emailDuplicate);
-        setCheckNick(!duplicate.nickDuplicate);
-        // console.log(duplicate.emailDuplicate, duplicate.nickDuplicate);
-    }, [duplicate.emailDuplicate, duplicate.nickDuplicate]);
+    // useEffect(() => {
+    //     setCheckEmail(!duplicate.emailDuplicate);
+    //     setCheckNick(!duplicate.nickDuplicate);
+    //     // console.log(duplicate.emailDuplicate, duplicate.nickDuplicate);
+    // }, [duplicate.emailDuplicate, duplicate.nickDuplicate]);
 
     useEffect(() => {
         // console.log(checkEmail, checkNick);
@@ -156,20 +156,20 @@ function AccountForm({ open, isLogin, handleClose }) {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <StBox>
-                <StHeader>
-                    <StCloseIconBtn
+            <S.Boxes>
+                <S.Header>
+                    <S.CloseIconBtn
                         sx={{ minHeight: 0, minWidth: 0, padding: 0, color: '#222222' }}
                         size="small"
                         onClick={() => handleClose()}
                     >
                         <CloseIcon style={{ fontSize: 20 }} />
-                    </StCloseIconBtn>
+                    </S.CloseIconBtn>
                     {isLogin ? '로그인' : '회원가입'}
-                    <StDiv />
-                </StHeader>
-                <StInner>
-                    <StDivBox>
+                    <S.Div />
+                </S.Header>
+                <S.Inner>
+                    <S.DivBox>
                         <TextField
                             fullWidth
                             id="outlined-basic"
@@ -177,9 +177,9 @@ function AccountForm({ open, isLogin, handleClose }) {
                             variant="outlined"
                             onChange={event => onEmailChangeHandler(event)}
                         />
-                    </StDivBox>
+                    </S.DivBox>
                     {isLogin ? null : (
-                        <StDivBox>
+                        <S.DivBox>
                             <TextField
                                 fullWidth
                                 id="outlined-basic"
@@ -188,9 +188,9 @@ function AccountForm({ open, isLogin, handleClose }) {
                                 value={nickname}
                                 onChange={event => onNicknameChangeHandler(event)}
                             />
-                        </StDivBox>
+                        </S.DivBox>
                     )}
-                    <StDivBox>
+                    <S.DivBox>
                         <TextField
                             fullWidth
                             id="outlined-basic"
@@ -217,120 +217,27 @@ function AccountForm({ open, isLogin, handleClose }) {
                                 helperText={confirmPwdMsg}
                             />
                         )}
-                    </StDivBox>
-                    <StBtn
+                    </S.DivBox>
+                    <S.Btn
                         disabled={isLogin ? false : disable}
                         onClick={isLogin ? () => onLoginHandler() : () => onSubmitHandler()}
                     >
                         계속
-                    </StBtn>
+                    </S.Btn>
                     {isLogin ? null : (
                         <Grid container columns={9}>
                             <Grid item sx={{ marginRight: '57px' }} xs={4} sm={4} md={4}>
-                                <StBtn onClick={() => onCheckEmail()}>이메일 중복 확인</StBtn>
+                                <S.Btn onClick={() => onCheckEmail()}>이메일 중복 확인</S.Btn>
                             </Grid>
                             <Grid item xs={4} sm={4} md={4}>
-                                <StBtn onClick={() => onCheckNick()}>닉네임 중복 확인</StBtn>
+                                <S.Btn onClick={() => onCheckNick()}>닉네임 중복 확인</S.Btn>.{' '}
                             </Grid>
                         </Grid>
                     )}
-                </StInner>
-            </StBox>
+                </S.Inner>
+            </S.Boxes>
         </Modal>
     );
 }
-const StCloseIconBtn = styled(IconButton)`
-    flex: 0 0 16px !important;
-    text-align: left !important;
-`;
-
-const StBtn = styled.button`
-    cursor: pointer;
-    font-family: var(--font-light);
-    display: inline-block !important;
-    margin: 0px !important;
-    position: relative !important;
-    text-align: center !important;
-    text-decoration: none !important;
-    touch-action: manipulation !important;
-    /* font-family: var(--e-ls-qkw) !important; */
-    font-size: 16px !important;
-    line-height: 20px !important;
-    font-weight: 600 !important;
-    border-radius: 8px;
-    outline: none !important;
-    padding: 14px 24px !important;
-    transition:
-        box-shadow 0.2s ease 0s,
-        -ms-transform 0.1s ease 0s,
-        -webkit-transform 0.1s ease 0s,
-        transform 0.1s ease 0s !important;
-    border: none !important;
-    background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
-    color: rgb(255, 255, 255) !important;
-    width: 100% !important;
-    margin-bottom: 24px !important;
-    margin-top: 16px !important;
-    &:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
-`;
-
-const StInner = styled(Box)`
-    padding: 24px !important;
-    flex: 1 1 auto !important;
-    overflow-y: auto !important;
-    outline: none !important;
-`;
-
-const StH3 = styled.h3`
-    font-family: var(--font-medium);
-    font-size: 22px !important;
-    line-height: 26px !important;
-    color: rgb(34, 34, 34) !important;
-    font-weight: 600 !important;
-    margin-top: 8px !important;
-    margin-bottom: 24px !important;
-`;
-
-const StDiv = styled.div`
-    flex: 0 0 16px !important;
-    text-align: right !important;
-`;
-
-const StHeader = styled.header`
-    font-family: var(--font-medium);
-    height: 64px !important;
-    display: flex !important;
-    flex: 0 0 auto !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    padding: 0px 24px !important;
-    border-bottom: 1px solid rgb(235, 235, 235) !important;
-    color: rgb(34, 34, 34) !important;
-    font-size: 16px !important;
-    line-height: 20px !important;
-    font-weight: 800 !important;
-`;
-
-const StBox = styled(Box)`
-    outline: none;
-    width: 100% !important;
-    max-width: 568px !important;
-    height: 100%;
-    max-height: 682px !important;
-    border-radius: 12px !important;
-    background-color: #ffffff;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-`;
-const StDivBox = styled.div`
-    text-align: center;
-    margin-top: 20px;
-    justify-content: 10px;
-`;
 
 export default AccountForm;
