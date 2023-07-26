@@ -1,20 +1,21 @@
 /* eslint-disable no-shadow */
-import React, { useState } from 'react';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { Divider } from '@mui/material';
-import { useCookies } from 'react-cookie';
-import { useDispatch } from 'react-redux';
-import UserIcon from './UserIcon';
-import UserMenuIcon from './UserMenuIcon';
-import SignUp from '../../signup/SignUp';
-import Login from '../../login/Login';
-import { initPage, initRooms } from '../../../redux/modules/roomSlice';
-import * as S from '../../../style/Login/UserInfo';
-import { setSignUpOpen, setAnchorEl, setLoginOpen } from '../../../redux/modules/modalSlice';
+
+import React, { useState } from "react";
+import styled from "styled-components";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Divider } from "@mui/material";
+import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import UserIcon from "./UserIcon";
+import UserMenuIcon from "./UserMenuIcon";
+import SignUp from "../../signup/SignUp";
+import Login from "../../login/Login";
+import { initPage, initRooms } from "../../../redux/modules/roomSlice";
+import { setSignUpOpen, setAnchorEl, setLoginOpen } from "../../../redux/modules/modalSlice";
+
 
 function UserInfo() {
-    // eslint-disable-next-line no-shadow
     const [signUpOpen, setSignUpOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -77,9 +78,17 @@ function UserInfo() {
                     <Divider />
                     <MenuItem onClick={() => handleSignUpOpen()}>회원가입</MenuItem>
                 </Menu>
-            </S.UserInfoDiv>
-            <SignUp open={signUpOpen} handleClose={() => handleSignUpClose()} />
-            <Login open={loginOpen} handleClose={() => handleLoginClose()} />
+
+            </StUserInfoDiv>
+            <SignUp
+                open={signUpOpen}
+                handleClose={() => handleSignUpClose()}
+            />
+            <Login
+                open={loginOpen}
+                handleClose={() => handleLoginClose()}
+            />
+
         </>
     );
 }
