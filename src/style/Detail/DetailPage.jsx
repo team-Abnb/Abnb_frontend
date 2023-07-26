@@ -50,11 +50,15 @@ export const Title = styled.div`
     }
 `;
 
-export const Info = styled.div``;
+export const Info = styled.div`
+    p {
+        margin-right: 5px;
+    }
+`;
 
 export const Share = styled.div`
-    .fullHeart {
-        color: red;
+    p {
+        margin-right: 5px;
     }
 `;
 
