@@ -12,6 +12,21 @@ function OrderBox() {
     const [startDate, setStartDate] = useState(new Date());
     const [finishDate, setFinishDate] = useState(new Date());
 
+    const showList = () => {
+        setChooseBox(!chooseBox);
+    };
+
+    const updateScroll = () => {
+        setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", updateScroll);
+        return () => {
+            window.removeEventListener("scroll", updateScroll);
+        };
+    }, []);
+
     useEffect(() => {
         const today = new Date();
         if (finishDate.getTime() < startDate.getTime()) {
@@ -21,21 +36,9 @@ function OrderBox() {
         }
     }, [startDate, finishDate]);
 
-    const showList = () => {
-        setChooseBox(!chooseBox);
-    };
-    const updateScroll = () => {
-        setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-    };
-
-    useEffect(() => {
-        window.addEventListener("scroll", updateScroll);
-
-        return () => {
-            window.removeEventListener("scroll", updateScroll);
-        };
-    }, []);
-
+    console.log(startDate);
+    console.log(finishDate);
+    
     return (
         <S.OrderBox>
             <div className="orderbox">

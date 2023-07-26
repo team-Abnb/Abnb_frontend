@@ -1,5 +1,6 @@
 import * as S from "../style/Detail/DetailPage";
 
+import TopBar from "../components/main/Topbar";
 import DetailHeader from "../components/Detail/DetailHeader";
 import Title from "../components/Detail/Title";
 import ImageLists from "../components/Detail/ImageLists";
@@ -11,6 +12,7 @@ import PlaceLocation from "../components/Detail/PlaceLocation";
 function DetailPage() {
     return (
         <>
+            <TopBar />
             <DetailHeader />
             <S.DetailPage>
                 <Title />
