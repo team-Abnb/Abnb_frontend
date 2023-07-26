@@ -58,11 +58,22 @@ const login = async (loginInformation) => {
 // 전체 숙소 조회
 const getRoomPosts = async (id) => {
     const response = await instance.get(`/api/rooms?theme=${id}`);
-    // console.log("전체 숙소 조회", response)
     return response.data;
 };
 
-export { addUsers, login, getRoomPosts };
+// 상세 숙소 조회
+const getRoomsDetail = async (roomId) => {
+    const response = await instance.get(`/api/rooms/${roomId}`);
+    return response.data;
+};
+
+// 댓글 조회
+const getComments = async (roomId) => {
+    const response = await instance.get(`/api/rooms/${roomId}/comments`);
+    return response.data;
+};
+
+export { addUsers, login, getRoomPosts, getRoomsDetail, getComments };
 
 // get 일때 사용
 // const { isLoading, isError, data } = useQuery("post", () => getRoomPosts(pluspage));

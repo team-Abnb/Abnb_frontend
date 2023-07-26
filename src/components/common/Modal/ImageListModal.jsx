@@ -1,13 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import * as S from "../../../style/common/Modal/Modal";
 
-function ImageListModal({ setImageModal }) {
+function ImageListModal({ setImageModal, roomPictures }) {
     const modalRef = useRef(null);
 
     const clickCloseModal = () => {
         setImageModal(false);
         document.body.style.overflow = "auto";
     };
+
+    console.log("110", roomPictures);
 
     useEffect(() => {
         const handleOutsideClick = (event) => {
@@ -28,12 +30,14 @@ function ImageListModal({ setImageModal }) {
             <S.ModalContainer ref={modalRef}>
                 <S.CloseButton onClick={clickCloseModal}>X</S.CloseButton>
                 <div>
-                    <S.ImageLists>
-                        <img
-                            src="https://images.unsplash.com/photo-1585231474241-c8340c2b2c65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2FzdGxlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                            alt="장소"
-                        />
-                    </S.ImageLists>
+                    {roomPictures.map((item) => (
+                        <S.ImageLists>
+                            <img
+                                src={item}
+                                alt="장소"
+                            />
+                        </S.ImageLists>
+                    ))}
                 </div>
             </S.ModalContainer>
         </S.ModalOverlay>
