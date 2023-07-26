@@ -379,7 +379,7 @@ export const RoomCard = styled.div`
     width: 300px;
     height: 390px;
     padding: 8px;
-    /* margin: ; */
+    margin-top: 80px;
 
     h3 {
         font-size: 15px;
