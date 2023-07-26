@@ -7,13 +7,13 @@ import * as S from "../../style/Detail/DetailPage";
 
 import LikeButton from "../common/LikeButton/LikeButton";
 
-function Title() {
+function Title({ title, address }) {
     return (
         <>
             <S.Title>
                 <h1>
                     <BsTranslate style={{ marginRight: "10px" }} />
-                    DOLLARBEG CASTLE - The Tower - 럭셔리 3베드 대여
+                    {title}
                 </h1>
                 <div>
                     <S.Info>
@@ -22,7 +22,7 @@ function Title() {
                         </p>
                         <p>4.7</p>
                         <p>후기 1개</p>
-                        <p>Clackmannanshire, 스코틀랜드, 영국</p>
+                        <p>{address}</p>
                     </S.Info>
                     <S.Share>
                         <p>

@@ -10,14 +10,19 @@ import UserInfo from "./UserInfo";
 import Amenities from "./Amenities";
 import Reservation from "./Reservation";
 
-function Information() {
+function Information({ userName, userProfilePicture, content, maxPeople, theme }) {
     return (
         <S.Information>
-            <UserInfo />
+            <UserInfo
+                userName={userName}
+                userProfilePicture={userProfilePicture}
+                maxPeople={maxPeople}
+                theme={theme}
+            />
             <S.Host>
                 <PiMedalMilitaryLight className="imageSize" />
                 <div>
-                    <h3>Paul님은 슈퍼호스트입니다</h3>
+                    <h3>{userName}님은 슈퍼호스트입니다</h3>
                     <p>
                         슈퍼호스트는 풍부한 경험과 높은 평점을 자랑하며 게스트가 숙소에서 편안히 머무를 수 있도록 최선을 다하는
                         호스트입니다.
@@ -37,16 +42,14 @@ function Information() {
                 <p>
                     <CiCalendar className="imageSize" />
                 </p>
-                <h3>7월 24일 오전 10:23 전까지 무료로 취소하실 수 있습니다.</h3>
+                <h3>전날 오전 10:23 전까지 무료로 취소하실 수 있습니다.</h3>
             </S.Calendar>
             <S.PlaceInfo>
-                <p>
-                    돌라베그 성은 스코틀랜드의 독특한 성 휴양지입니다. 이 고급 아파트에는 3개의 테마가 있는 침실, 영화방 및 타워가 있으며,
-                    전용 옥상 테라스와 주변 시골과 오칠 언덕의 파노라마 전망을 자랑합니다. <br />
-                    독특하고 유서 깊은 달러베그 성의 타워 아파트는 완전히 새롭게 단장되었으며 고급 가구와 함께 높은 수준으로 선보입니다.
-                    여러 개의 방에 있는 포탑 코너와 모든 창문에서 탁월한 전망을 감상할 수 있어 전체적으로 훌륭한 특성을 유지하고 있습니다...
-                </p>
-                <div className="moreInfo">
+                <p>{content}</p>
+                <div
+                    className="moreInfo"
+                    onClick={(event) => alert("내용이 더 존재하지 않습니다.")}
+                >
                     더 보기
                     <IoIosArrowForward />
                 </div>

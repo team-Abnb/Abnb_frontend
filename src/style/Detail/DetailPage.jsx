@@ -67,6 +67,9 @@ export const ImageLists = styled.div`
     display: flex;
     flex-direction: row;
     padding: 24px 0 0 0;
+    img {
+        width: 500px;
+    }
 `;
 
 export const ImageContainer = styled.div`
@@ -246,6 +249,7 @@ export const PlaceInfo = styled.div`
         margin-top: 16px;
         text-decoration: underline;
         font-weight: 500;
+        cursor: pointer;
     }
 `;
 
