@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // Topbar.jsx
 export const Div = styled.div`
@@ -380,18 +380,19 @@ export const FilterBtn = styled.button`
 `;
 
 // RoomCard.jsx
+
 export const RoomCards = styled.div`
     display: flex;
     flex-wrap: wrap;
     max-width: 1278px;
-    margin: auto;
+    margin: 0;
 `;
 
 export const RoomCard = styled.div`
     width: 300px;
     height: 390px;
-    padding: 8px;
-    margin-top: 80px;
+    padding: 9px;
+    margin-top: 40px;
 
     h3 {
         font-size: 15px;
