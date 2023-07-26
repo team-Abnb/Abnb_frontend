@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "../../style/Main/MainPage";
-import LikeButton from "../../components/common/LikeButton/LikeButton"
+import LikeButton from "../../components/common/LikeButton/LikeButton";
 
 function RoomCard() {
     return (
