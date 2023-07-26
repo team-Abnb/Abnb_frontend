@@ -36,9 +36,9 @@ function OrderBox() {
         }
     }, [startDate, finishDate]);
 
-    console.log(startDate);
-    console.log(finishDate);
-    
+    // console.log(startDate);
+    // console.log(finishDate);
+
     return (
         <S.OrderBox>
             <div className="orderbox">
