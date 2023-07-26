@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import ImageUpload from '../components/post/ImageFile/ImageUpload';
 // import { createRoom } from '../redux/modules/roomSlice';
 import Topbar from '../components/main/Topbar';
 import * as S from '../style/Room/RoomsAdd';
-export default function RoomsAdd() {
+import { createRoom } from '../axios/api';
+export default function RoomsAdd({ savedData }) {
     // 값을 담을 두 공간 필요 1. 제목 2. 내용
     // 따라서 2개의 useState가 필요 현재 상태를 저장하고
     // 변경할 수 있다.
@@ -12,8 +14,8 @@ export default function RoomsAdd() {
     // const dispatch = useDispatch();
     const navigate = useNavigate();
     // selectList
-    const selectList = ['house', 'Apartment', 'hotel'];
-    const placeList = ['멋진수영장', '한옥', '열대지역', '인기급상승', '캐슬'];
+    const selectList = ['선택', 'house', 'Apartment', 'hotel'];
+    const placeList = ['선택', '오션뷰', '한옥', '열대지역', '인기급상승', '캐슬'];
 
     const initialRoomState = {
         title: '',
@@ -35,22 +37,33 @@ export default function RoomsAdd() {
         const { name, value } = e.target;
         setRooms(prevRooms => ({ ...prevRooms, [name]: value }));
     };
+
     // 추가하기 버튼
-    const onSumitHandler = e => {
+
+    const onSumitHandler = async e => {
         if (Object.values(rooms).some(value => value.trim() === '') && imageCount >= 2) {
             return alert('모든 항목을 입력해주세요.');
         }
-        // dispatch(
-        //     createRoom({
-        //         room: {
-        //             ...rooms,
-        //             price: parseFloat(rooms.price),
-        //         },
-        //         imageFile,
-        //     }),
-        // );
-        navigate(`/`);
-        setRooms(initialRoomState);
+        try {
+            const savedData = {
+                title: rooms.title,
+                description: rooms.description,
+                price: rooms.price,
+                address: rooms.address,
+                type: rooms.type,
+                place: rooms.place,
+                image: imageFile,
+            };
+            const response = await createRoom(savedData);
+            console.log('숙소 등록 결과', response);
+
+            navigate(`/`);
+            setRooms(initialRoomState);
+        } catch (error) {
+            // 등록 실패 처리
+
+            console.error('숙소 등록 오류', error);
+        }
     };
 
     return (
