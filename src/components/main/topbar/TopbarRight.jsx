@@ -1,18 +1,20 @@
 import React from 'react';
 import * as S from '../../../style/Main/MainPage';
-import { Link } from 'react-router-dom';
+//import StyledLink from '../../../style/Main/MainPage';
+
 import LangIcon from './LangIcon';
+// import styled from 'styled-components';
 import UserInfo from './UserInfo';
 
 function TopbarRight() {
     return (
         <S.Wrappers>
             <S.Nav>
-                <S.Link>
-                    <Link to="/api/rooms/main">
+                <S.StLink>
+                    <S.StyledLink to="/api/rooms/main">
                         <S.Text>당신의 공간을 에어비앤비하세요</S.Text>
-                    </Link>
-                </S.Link>
+                    </S.StyledLink>
+                </S.StLink>
                 <S.IconBtn>
                     <S.IconWrapper>
                         <LangIcon />

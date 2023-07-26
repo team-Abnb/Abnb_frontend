@@ -22,7 +22,6 @@ export const P = styled.p`
     letter-spacing: 0.1px;
     line-height: 1.5;
     color: black;
-    text-decoration: underline;
 `;
 export const Input = styled.input`
     font-family: var(--font-regular);
@@ -38,7 +37,7 @@ export const Select = styled.select`
     font-size: 18px;
     font-weight: bold;
     margin: 50px;
-    letter-spacing: 0.1px;
+    letter-spacing: 0.5px;
     padding: 30px;
     border-radius: 18px;
 `;

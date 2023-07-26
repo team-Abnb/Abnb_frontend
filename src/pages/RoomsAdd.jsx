@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ImageUpload from '../components/post/ImageFile/ImageUpload';
 // import { createRoom } from '../redux/modules/roomSlice';
@@ -10,7 +9,7 @@ export default function RoomsAdd() {
     // 따라서 2개의 useState가 필요 현재 상태를 저장하고
     // 변경할 수 있다.
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
     // selectList
     const selectList = ['house', 'Apartment', 'hotel'];
