@@ -33,11 +33,10 @@ function OrderBox() {
             alert("finishDate는 startDate보다 이전 날짜일 수 없습니다.");
             setStartDate(today);
             setFinishDate(today);
+            console.log(startDate);
+            console.log(finishDate);
         }
     }, [startDate, finishDate]);
-
-    // console.log(startDate);
-    // console.log(finishDate);
 
     return (
         <S.OrderBox>
