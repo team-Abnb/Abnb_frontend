@@ -20,6 +20,7 @@ function ChoosePeople({ countPeople, setCountPeople }) {
             </S.ChoosePeople>
         );
     }
+    
     if (countPeople >= 20) {
         return (
             <S.ChoosePeople>

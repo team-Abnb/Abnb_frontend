@@ -518,3 +518,9 @@ export const PlaceLocation = styled.div`
         font-size: 16px;
     }
 `;
+
+// DatePicker.jsx
+export const DatePicker = styled.div`
+    font-size: 30px;
+    margin-left: 10px;
+`;
