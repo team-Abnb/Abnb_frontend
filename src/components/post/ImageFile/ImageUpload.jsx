@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useRef, useState } from 'react';
-import styled from 'styled-components';
-
+import * as S from '../../../style/Main/ImageUpload';
 export default function ImageUpload({ setImageFile }) {
     const fileInput = useRef();
     // const [prevImg, setPrevImg] = useState('');
@@ -29,21 +28,21 @@ export default function ImageUpload({ setImageFile }) {
 
     return (
         <div>
-            <StImgContainer>
+            <S.ImgContainer>
                 {/* <StImg alt="" src={prevImg} style={{ margin: 'auto' }} /> */}
                 {prevImg.map((image, id) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <div key={id}>
-                        <StImg src={image} alt={`${image}-${id}`} />
-                        <StDeleteButton type="button" onClick={() => handleDeleteImage(id)}>
+                        <S.Img src={image} alt={`${image}-${id}`} />
+                        <S.DeleteButton type="button" onClick={() => handleDeleteImage(id)}>
                             x
-                        </StDeleteButton>
+                        </S.DeleteButton>
                     </div>
                 ))}
-            </StImgContainer>
-            <StLabel htmlFor="fileinput">
-                <StImgUp alt="Logo" type="file" src="https://cdn-icons-png.flaticon.com/512/2360/2360557.png" />
-                <StInput
+            </S.ImgContainer>
+            <S.Label htmlFor="fileinput">
+                <S.ImgUp alt="Logo" type="file" src="https://cdn-icons-png.flaticon.com/512/2360/2360557.png" />
+                <S.Input
                     id="fileinput"
                     type="file"
                     multiple
@@ -53,46 +52,7 @@ export default function ImageUpload({ setImageFile }) {
                         handleImage(event);
                     }}
                 />
-            </StLabel>
+            </S.Label>
         </div>
     );
 }
-
-const StImg = styled.img`
-    width: 40%;
-    height: 40%;
-    object-fit: cover;
-`;
-const StImgUp = styled.img`
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-`;
-const StInput = styled.input`
-    display: none;
-`;
-const StImgContainer = styled.div`
-    /* width: 680px;
-  height: 300px; */
-    width: 100%;
-    height: 40%;
-    background: linear-gradient(
-        to right,
-        rgb(239, 143, 166) 0%,
-        rgb(219, 67, 118) 50%,
-        rgb(227, 25, 120) 100%
-    ) !important;
-    border: 4px solid pink;
-`;
-
-const StLabel = styled.label`
-    display: block;
-    margin-bottom: 10px;
-    width: 70px;
-    height: 70px;
-`;
-
-const StDeleteButton = styled.button`
-    border-radius: 10px;
-    border: 0px;
-`;

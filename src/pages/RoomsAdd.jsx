@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ImageUpload from '../components/post/ImageFile/ImageUpload';
 import { createRoom } from '../redux/modules/roomSlice';
 import Topbar from '../components/main/Topbar';
-
+import * as S from '../style/Room/RoomsAdd';
 export default function RoomsAdd() {
     // 값을 담을 두 공간 필요 1. 제목 2. 내용
     // 따라서 2개의 useState가 필요 현재 상태를 저장하고
@@ -64,61 +63,61 @@ export default function RoomsAdd() {
             }}
         >
             <Topbar />
-            <Container>
-                <P>당신의 공간을 에어비앤비하세요</P>
-                <StBorder>
+            <S.Container>
+                <S.P>당신의 공간을 에어비앤비하세요</S.P>
+                <S.Border>
                     <ImageUpload setImageFile={setImageFile} />
-                </StBorder>
-                <StBorder>
-                    <StSpanBar>숙소</StSpanBar>
-                    <StInput
+                </S.Border>
+                <S.Border>
+                    <S.SpanBar>숙소</S.SpanBar>
+                    <S.Input
                         type="text"
                         name="title"
                         value={rooms.title}
                         onChange={onChangeHandler}
                         placeholder="제목을 입력해주세요"
                     />
-                </StBorder>
+                </S.Border>
 
                 <br />
-                <StBorder>
-                    <StSpanBar>내용</StSpanBar>
-                    <StInput
+                <S.Border>
+                    <S.SpanBar>내용</S.SpanBar>
+                    <S.Input
                         type="text"
                         name="description"
                         value={rooms.description}
                         onChange={onChangeHandler}
                         placeholder="내용을 입력해주세요"
                     />
-                </StBorder>
+                </S.Border>
 
                 <br />
-                <StBorder>
-                    <StSpanBar>가격</StSpanBar>
-                    <StInput
+                <S.Border>
+                    <S.SpanBar>가격</S.SpanBar>
+                    <S.Input
                         type="text"
                         name="price"
                         value={rooms.price}
                         onChange={onChangeHandler}
                         placeholder="가격을 입력해주세요"
                     />
-                </StBorder>
+                </S.Border>
                 <br />
-                <StBorder>
-                    <StSpanBar>주소</StSpanBar>
-                    <StInput
+                <S.Border>
+                    <S.SpanBar>주소</S.SpanBar>
+                    <S.Input
                         type="text"
                         name="address"
                         value={rooms.address}
                         onChange={onChangeHandler}
                         placeholder="주소를 입력해주세요"
                     />
-                </StBorder>
+                </S.Border>
 
                 <br />
-                <StBorder>
-                    <StSpanBar>타입</StSpanBar>
-                    <StSelect
+                <S.Border>
+                    <S.SpanBar>타입</S.SpanBar>
+                    <S.Select
                         type=""
                         value={rooms.type}
                         onChange={e => {
@@ -131,14 +130,14 @@ export default function RoomsAdd() {
                                 {item}
                             </option>
                         ))}
-                    </StSelect>
-                </StBorder>
+                    </S.Select>
+                </S.Border>
 
                 <br />
 
-                <StBorder>
-                    <StSpanBar>테마</StSpanBar>
-                    <StSelect
+                <S.Border>
+                    <S.SpanBar>테마</S.SpanBar>
+                    <S.Select
                         type=""
                         value={rooms.place}
                         onChange={e => {
@@ -151,11 +150,11 @@ export default function RoomsAdd() {
                                 {t}
                             </option>
                         ))}
-                    </StSelect>
-                </StBorder>
+                    </S.Select>
+                </S.Border>
                 <br />
 
-                <StSubmitBtn
+                <S.SubmitBtn
                     type="button"
                     className="btn btn-primary"
                     onClick={() => {
@@ -163,97 +162,94 @@ export default function RoomsAdd() {
                     }}
                 >
                     당신의 에어비앤비 작성하기
-                </StSubmitBtn>
-            </Container>
+                </S.SubmitBtn>
+            </S.Container>
         </div>
     );
 }
 
-const Container = styled.div`
-    display: inline-block;
-    vertical-align: middle;
-    max-width: 1000px;
-    max-height: 1000px;
-    width: 70%;
-    height: 70%;
-    text-align: center;
-    padding-left: 180px;
-    justify-content: 10px;
-`;
-
-const P = styled.p`
-    font-family: var(--font-semibold);
-    font-size: 25px;
-    font-weight: bold;
-    display: inline-block;
-    margin: 20px;
-    text-align: center;
-    letter-spacing: 0.1px;
-    line-height: 1.5;
-    color: black;
-    text-decoration: underline;
-`;
-const StInput = styled.input`
-    font-family: var(--font-regular);
-    font-size: 15px;
-    font-weight: bold;
-    margin: 50px;
-    letter-spacing: 0.1px;
-    padding: 30px;
-    border-radius: 18px;
-`;
-
-const StSelect = styled.select`
-    font-size: 18px;
-    font-weight: bold;
-    margin: 50px;
-    letter-spacing: 0.1px;
-    padding: 30px;
-    border-radius: 18px;
-`;
-
-const StSubmitBtn = styled.button`
-    cursor: pointer !important;
-    display: inline-block !important;
-    margin: 0px !important;
-    position: relative !important;
-    text-align: center !important;
-    text-decoration: none !important;
-    touch-action: manipulation !important;
-    /* font-family: var(--e-ls-qkw) !important; */
-    font-size: 16px !important;
-    line-height: 20px !important;
-    font-weight: 500 !important;
-    border-radius: 8px;
-    outline: none !important;
-    padding: 14px 24px !important;
-    transition:
-        box-shadow 0.2s ease 0s,
-        -ms-transform 0.1s ease 0s,
-        -webkit-transform 0.1s ease 0s,
-        transform 0.1s ease 0s !important;
-    border: none !important;
-    background: linear-gradient(
-        to right,
-        rgb(239, 143, 166) 0%,
-        rgb(219, 67, 118) 50%,
-        rgb(227, 25, 120) 100%
-    ) !important;
-    color: rgb(255, 255, 255) !important;
-    width: 100% !important;
-    margin-bottom: 24px !important;
-    margin-top: 16px !important;
-`;
-
-const StSpanBar = styled.span`
-    font-family: var(--font-light);
-    font-size: 17px;
-`;
-const StBorder = styled.div`
-    border-bottom: 1px solid gray;
-    font-weight: 600;
-`;
-
-// const StBox = styled.box`
-//   border: 10px solid red;
+// const Container = styled.div`
+//     display: inline-block;
+//     vertical-align: middle;
+//     max-width: 1000px;
+//     max-height: 1000px;
+//     width: 70%;
+//     height: 70%;
+//     text-align: center;
+//     padding-left: 180px;
+//     justify-content: 10px;
 // `;
+
+// const P = styled.p`
+//     font-family: var(--font-semibold);
+//     font-size: 25px;
+//     font-weight: bold;
+//     display: inline-block;
+//     margin: 20px;
+//     text-align: center;
+//     letter-spacing: 0.1px;
+//     line-height: 1.5;
+//     color: black;
+//     text-decoration: underline;
+// `;
+// const StInput = styled.input`
+//     font-family: var(--font-regular);
+//     font-size: 15px;
+//     font-weight: bold;
+//     margin: 50px;
+//     letter-spacing: 0.1px;
+//     padding: 30px;
+//     border-radius: 18px;
+// `;
+
+// const StSelect = styled.select`
+//     font-size: 18px;
+//     font-weight: bold;
+//     margin: 50px;
+//     letter-spacing: 0.1px;
+//     padding: 30px;
+//     border-radius: 18px;
+// `;
+
+// const StSubmitBtn = styled.button`
+//     cursor: pointer !important;
+//     display: inline-block !important;
+//     margin: 0px !important;
+//     position: relative !important;
+//     text-align: center !important;
+//     text-decoration: none !important;
+//     touch-action: manipulation !important;
+//     /* font-family: var(--e-ls-qkw) !important; */
+//     font-size: 16px !important;
+//     line-height: 20px !important;
+//     font-weight: 500 !important;
+//     border-radius: 8px;
+//     outline: none !important;
+//     padding: 14px 24px !important;
+//     transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s,
+//         transform 0.1s ease 0s !important;
+//     border: none !important;
+//     background: linear-gradient(
+//         to right,
+//         rgb(239, 143, 166) 0%,
+//         rgb(219, 67, 118) 50%,
+//         rgb(227, 25, 120) 100%
+//     ) !important;
+//     color: rgb(255, 255, 255) !important;
+//     width: 100% !important;
+//     margin-bottom: 24px !important;
+//     margin-top: 16px !important;
+// `;
+
+// const StSpanBar = styled.span`
+//     font-family: var(--font-light);
+//     font-size: 17px;
+// `;
+// const StBorder = styled.div`
+//     border-bottom: 1px solid gray;
+//     font-weight: 600;
+// `;
+
+// // const StBox = styled.box`
+// //   border: 10px solid red;
+// // `;
