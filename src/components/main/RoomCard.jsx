@@ -1,12 +1,8 @@
 import React from 'react';
-import * as S from "../../style/Main/MainPage"
+import * as S from '../../style/Main/MainPage';
 
 function RoomCard() {
-    
-    return (
-        <>
-        </>
-    );
+    return <></>;
 }
 
 export default RoomCard;
