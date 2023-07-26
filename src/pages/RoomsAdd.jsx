@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ImageUpload from '../components/post/ImageFile/ImageUpload';
-import { createRoom } from '../redux/modules/roomSlice';
+// import { createRoom } from '../redux/modules/roomSlice';
 import Topbar from '../components/main/Topbar';
 import * as S from '../style/Room/RoomsAdd';
 export default function RoomsAdd() {
@@ -41,15 +41,15 @@ export default function RoomsAdd() {
         if (Object.values(rooms).some(value => value.trim() === '') && imageCount >= 2) {
             return alert('모든 항목을 입력해주세요.');
         }
-        dispatch(
-            createRoom({
-                room: {
-                    ...rooms,
-                    price: parseFloat(rooms.price),
-                },
-                imageFile,
-            }),
-        );
+        // dispatch(
+        //     createRoom({
+        //         room: {
+        //             ...rooms,
+        //             price: parseFloat(rooms.price),
+        //         },
+        //         imageFile,
+        //     }),
+        // );
         navigate(`/`);
         setRooms(initialRoomState);
     };
