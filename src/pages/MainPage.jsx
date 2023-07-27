@@ -29,7 +29,7 @@ function Main() {
         return <p>오류가 발생하였습니다...!</p>;
     }
 
-    // console.log("data", data);
+    console.log("data", data);
 
     const handleThemeBtnClick = (themeName) => {
         setSelectedTheme(themeName);

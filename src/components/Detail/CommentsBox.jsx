@@ -29,30 +29,29 @@ function CommentsBox({ roomId }) {
             <S.CommentsBox>
                 <h1>후기 {data.totalComments}개</h1>
                 {data.commentResponseDtos.map((item) => (
-                    <>
-                        <S.CommentLists>
-                            <Comment
-                                id={item.key}
-                                comment={item.comment}
-                                commentId={item.commentId}
-                                createdAt={item.createdAt}
-                                profilePicture={item.profilePicture}
-                                username={item.username}
-                            />
-                        </S.CommentLists>
-                        <S.CommentButton onClick={CommentClickHandler}>후기 {data.totalComments}개 모두 보기</S.CommentButton>
-                        {commentModal && (
-                            <CommentListModal
-                                setCommentModal={setCommentModal}
-                                comment={item.comment}
-                                commentId={item.commentId}
-                                createdAt={item.createdAt}
-                                profilePicture={item.profilePicture}
-                                username={item.username}
-                            />
-                        )}
-                    </>
+                    <S.CommentLists>
+                        <Comment
+                            id={item.key}
+                            comment={item.comment}
+                            commentId={item.commentId}
+                            createdAt={item.createdAt}
+                            profilePicture={item.profilePicture}
+                            username={item.username}
+                        />
+                    </S.CommentLists>
                 ))}
+                <S.CommentButton onClick={CommentClickHandler}>후기 {data.totalComments}개 모두 보기</S.CommentButton>
+                {commentModal &&
+                    data.commentResponseDtos.map((modal) => (
+                        <CommentListModal
+                            setCommentModal={setCommentModal}
+                            comment={modal.comment}
+                            commentId={modal.commentId}
+                            createdAt={modal.createdAt}
+                            profilePicture={modal.profilePicture}
+                            username={modal.username}
+                        />
+                    ))}
             </S.CommentsBox>
         </>
     );

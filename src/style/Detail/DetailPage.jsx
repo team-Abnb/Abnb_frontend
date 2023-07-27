@@ -322,7 +322,7 @@ export const CommentButton = styled.button`
 // Comment.jsx
 export const Comment = styled.div`
     width: 40%;
-    padding-right: 10%;
+    padding-right: 8%;
     margin: 0 0 16px;
     p {
         font-size: 14px;
