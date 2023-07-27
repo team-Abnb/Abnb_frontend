@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
 // DetailHeader.jsx
-export const DetailHeader = styled.div`
-    width: 100vw;
-    height: 80px;
-    border-bottom: 1px solid black;
-`;
 
 export const Menu = styled.div`
     margin: auto;
@@ -13,6 +8,7 @@ export const Menu = styled.div`
     padding: 30px 0;
     display: flex;
     flex-direction: row;
+
     div {
         margin-right: 30px;
         font-size: 14px;
@@ -33,31 +29,36 @@ export const DetailPage = styled.div`
 
     .information {
         display: flex;
-        padding: 48px 0 24px 0;
+        padding-top: 48px;
     }
 `;
 
 // Title.jsx
 export const Title = styled.div`
+    font-size: 14px;
+
+    h1 {
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
     div {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    h1 {
-        font-size: 26px;
-    }
-    font-size: 14px;
 `;
 
 export const Info = styled.div`
-    background-color: yellow;
+    p {
+        margin-right: 5px;
+    }
 `;
 
 export const Share = styled.div`
-    .fullHeart {
-        color: red;
+    p {
+        margin-right: 5px;
     }
 `;
 
@@ -66,6 +67,9 @@ export const ImageLists = styled.div`
     display: flex;
     flex-direction: row;
     padding: 24px 0 0 0;
+    img {
+        width: 500px;
+    }
 `;
 
 export const ImageContainer = styled.div`
@@ -151,10 +155,33 @@ export const Information = styled.div`
     width: 60%;
 `;
 
+// USerInfo.jsx
+export const UserInfo = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #ebebeb;
+    h1 {
+        font-size: 22px;
+        font-weight: 500;
+    }
+    h2 {
+        font-size: 16px;
+    }
+    img {
+        width: 56px;
+        height: 56px;
+        border-radius: 100%;
+    }
+`;
+
 export const Host = styled.div`
     display: flex;
     flex-direction: row;
-    margin: 24px 0 24px 0;
+    padding-top: 32px;
+
     h3 {
         font-size: 16px;
     }
@@ -174,7 +201,7 @@ export const Host = styled.div`
 export const Location = styled.div`
     display: flex;
     flex-direction: row;
-    margin: 2px 0 20px 0;
+    margin: 20px 0;
     h3 {
         font-size: 16px;
         padding-left: 16px;
@@ -194,7 +221,8 @@ export const Calendar = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin: 20px 0 20px 0;
+    padding-bottom: 32px;
+
     h3 {
         font-size: 16px;
         margin-left: 16px;
@@ -206,46 +234,32 @@ export const Calendar = styled.div`
     }
 `;
 
-// USerInfo.jsx
-export const UserInfo = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    /* padding: 48px 0 24px 0; */
-
-    border-bottom: 1px solid #ebebeb;
-    h1 {
-        font-size: 22px;
-    }
-    h2 {
-        font-size: 16px;
-    }
-    img {
-        width: 56px;
-        height: 56px;
-        border-radius: 100%;
-    }
-`;
-
 // PlaceInfo.jsx
 export const PlaceInfo = styled.div`
-    padding-bottom: 24px;
+    border-top: 1px solid #ebebeb;
     border-bottom: 1px solid #ebebeb;
+    padding: 32px 0 48px 0;
+
     div {
         display: flex;
         flex-direction: row;
         align-items: center;
     }
+    .moreInfo {
+        margin-top: 16px;
+        text-decoration: underline;
+        font-weight: 500;
+        cursor: pointer;
+    }
 `;
 
 // Amenities.jsx
 export const Amenities = styled.div`
-    padding: 24px 0 24px 0;
-    border-bottom: 1px solid #ebebeb;
+    padding: 48px 0;
 
     h1 {
         font-size: 22px;
+        font-weight: 500;
         padding-bottom: 24px;
     }
     section {
@@ -270,48 +284,50 @@ export const Amenity = styled.div`
 
 // Reservation.jsx
 export const Reservation = styled.div`
-    padding: 24px 0;
+    padding: 48px 0;
+    border-top: 1px solid #ebebeb;
 `;
 
 // CommentsBox.jsx
 export const CommentsBox = styled.div`
     width: 100%;
+    color: #222222;
     border-top: 1px solid #ebebeb;
-    padding-top: 24px;
+    padding-top: 48px;
 
     h1 {
         font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 24px;
     }
+    p {
+    }
+`;
+
+export const CommentLists = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`;
+
+export const CommentButton = styled.button`
+    font-size: 16px;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    padding: 13px 23px;
+    color: #222222;
+    background-color: #ffffff;
+    cursor: pointer;
 `;
 
 // Comment.jsx
 export const Comment = styled.div`
     width: 40%;
-    padding-right: 10%;
+    padding-right: 8%;
     margin: 0 0 16px;
-    .userProfile {
-        display: flex;
-        flex-direction: row;
-        div {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        img {
-            width: 40px;
-            height: 40px;
-            border-radius: 100%;
-            margin-right: 16px;
-        }
-        h3 {
-            font-size: 16px;
-        }
-        p {
-            font-size: 14px;
-            color: #717171;
-        }
+    p {
+        font-size: 14px;
+        color: #717171;
     }
-
     .overflow {
         color: #000;
         display: -webkit-box;
@@ -323,10 +339,31 @@ export const Comment = styled.div`
         content: "...";
     }
 
+    .moreInfo {
+        margin: 10px 0;
+        text-decoration: underline;
+        font-weight: 500;
+        cursor: pointer;
+    }
+`;
+
+export const UserProfiles = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 16px;
     div {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        margin-right: 16px;
+    }
+    h3 {
+        font-size: 16px;
     }
 `;
 
@@ -428,6 +465,37 @@ export const People = styled.button`
     background-color: #ffffff;
 `;
 
+// ChoosePeople.jsx
+export const ChoosePeople = styled.div`
+    background: rgb(255, 255, 255);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 6px, rgba(0, 0, 0, 0.07) 0px 0px 0px 1px;
+    box-sizing: border-boxt;
+    min-width: 280px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    padding: 15% 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    button {
+        width: 60px;
+        height: 60px;
+        border-radius: 100%;
+        border: 2px solid #ebebebeb;
+        background-color: #ffffff;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #ebebeb;
+    }
+    div {
+        font-size: 40px;
+    }
+`;
+
 export const OrderButton = styled.button`
     width: 100%;
     height: 48px;
@@ -436,4 +504,31 @@ export const OrderButton = styled.button`
     border: none;
     border-radius: 8px;
     margin: 20px 0;
+`;
+
+// PlaceLocation.jsx
+export const PlaceLocation = styled.div`
+    border-top: 1px solid #ebebeb;
+    color: #222222;
+    margin: 48px 0;
+    padding: 48px 0;
+    h1 {
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 24px;
+    }
+    h3 {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 16px;
+    }
+`;
+
+// DatePicker.jsx
+export const DatePicker = styled.div`
+    font-size: 30px;
+    margin-left: 10px;
 `;

@@ -1,41 +1,117 @@
-import React, { useState } from 'react';
-import AccountForm from '../components/accountForm/AccountForm';
+import Topbar from "../components/main/Topbar";
+import RoomCard from "../components/main/RoomCard";
+import { useQuery } from "react-query";
+import { getRoomPosts } from "../axios/api";
+import React, { useState, useEffect } from "react";
+import * as S from "../style/Main/MainPage";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import castle from "../images/castle.jpeg";
+import hot from "../images/hot.jpeg";
+import korean from "../images/korean.jpeg";
+import pool from "../images/pool.jpeg";
+import tropical from "../images/tropical.jpeg";
 
-function MainPage() {
-    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-    const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+function Main() {
+    const [selectedTheme, setSelectedTheme] = useState("인기 급상승");
+    const { isLoading, isError, data, refetch } = useQuery(["post", selectedTheme], () => getRoomPosts(selectedTheme));
+    const navigate = useNavigate();
 
-    // 로그인 모달을 열기 위한 핸들러
-    const handleOpenLoginModal = () => {
-        setIsLoginModalOpen(true);
+    useEffect(() => {
+        refetch();
+    }, [selectedTheme]);
+
+    if (isLoading) {
+        return <p>로딩중.....</p>;
+    }
+
+    if (isError) {
+        return <p>오류가 발생하였습니다...!</p>;
+    }
+
+    console.log("data", data);
+
+    const handleThemeBtnClick = (themeName) => {
+        setSelectedTheme(themeName);
     };
 
-    // 회원가입 모달을 열기 위한 핸들러
-    const handleOpenSignUpModal = () => {
-        setIsSignUpModalOpen(true);
-    };
-
-    // 모달 닫기 핸들러
-    const handleCloseModal = () => {
-        setIsLoginModalOpen(false);
-        setIsSignUpModalOpen(false);
+    const handleBoxClick = (roomId) => {
+        navigate(`/detailpage/${roomId}`);
     };
 
     return (
-        <div>
-            {/* 홈페이지 컨텐츠 */}
-            {/* 로그인 버튼 */}
-            <button onClick={handleOpenLoginModal}>로그인</button>
-            {/* 회원가입 버튼 */}
-            <button onClick={handleOpenSignUpModal}>회원가입</button>
-
-            {/* 로그인 모달 */}
-            <AccountForm open={isLoginModalOpen} isLogin={true} handleClose={handleCloseModal} />
-
-            {/* 회원가입 모달 */}
-            <AccountForm open={isSignUpModalOpen} isLogin={false} handleClose={handleCloseModal} />
-        </div>
+        <>
+            <Topbar />
+            <>
+                <S.RoomTypeContainer>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("인기 급상승")}>
+                        <div>
+                            <img
+                                src={hot}
+                                alt="테마별 장소"
+                            />
+                            <S.ThemeName>인기 급상승</S.ThemeName>
+                        </div>
+                    </S.ThemeBtn>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("한옥")}>
+                        <div>
+                            <img
+                                src={korean}
+                                alt="테마별 장소"
+                            />
+                            <S.ThemeName>한옥</S.ThemeName>
+                        </div>
+                    </S.ThemeBtn>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("캐슬")}>
+                        <div>
+                            <img
+                                src={castle}
+                                alt="테마별 장소"
+                            />
+                            <S.ThemeName>캐슬</S.ThemeName>
+                        </div>
+                    </S.ThemeBtn>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("오션뷰")}>
+                        <div>
+                            <img
+                                src={pool}
+                                alt="테마별 장소"
+                            />
+                            <S.ThemeName>오션뷰</S.ThemeName>
+                        </div>
+                    </S.ThemeBtn>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("열대 지역")}>
+                        <div>
+                            <img
+                                src={tropical}
+                                alt="테마별 장소"
+                            />
+                            <S.ThemeName>열대 지역</S.ThemeName>
+                        </div>
+                    </S.ThemeBtn>
+                    <S.FilterDiv>
+                        <S.FilterBtn>
+                            <S.FilterSpan>
+                                <S.FilterText>필터</S.FilterText>
+                            </S.FilterSpan>
+                        </S.FilterBtn>
+                    </S.FilterDiv>
+                </S.RoomTypeContainer>
+            </>
+            <S.CardContainer>
+                {data
+                    .filter((item) => item.theme === selectedTheme)
+                    .map((item) => (
+                        <div onClick={() => handleBoxClick(item.roomId)}>
+                            <RoomCard
+                                key={item.roomId}
+                                item={item}
+                            />
+                        </div>
+                    ))}
+            </S.CardContainer>
+        </>
     );
 }
 
-export default MainPage;
+export default Main;
