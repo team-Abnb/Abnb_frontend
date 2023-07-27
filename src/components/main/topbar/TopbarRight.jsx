@@ -1,10 +1,10 @@
-import React from 'react';
-import * as S from '../../../style/Main/MainPage';
+import React from "react";
+import * as S from "../../../style/Main/MainPage";
 //import StyledLink from '../../../style/Main/MainPage';
 
-import LangIcon from './LangIcon';
+import LangIcon from "./LangIcon";
 // import styled from 'styled-components';
-import UserInfo from './UserInfo';
+import UserInfo from "./UserInfo";
 
 function TopbarRight() {
     return (
