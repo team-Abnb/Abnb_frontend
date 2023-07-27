@@ -14,19 +14,19 @@ function ImageLists({ roomPictures }) {
         <>
             <S.ImageLists>
                 <S.ImageContainer>
-                    {/* <img
+                    <img
                         src={roomPictures[0]}
                         alt="장소 이미지"
                         className="firstImage"
-                    /> */}
+                    />
                     <div class="firstOverlay"></div>
                 </S.ImageContainer>
                 <S.ImageContainer>
-                    {/* <img
+                    <img
                         src={roomPictures[1]}
                         alt="장소 이미지"
                         className="lastImage"
-                    /> */}
+                    />
                     <div class="lastOverlay"></div>
                     <S.Button onClick={ImageClickHandler}>
                         <CgMenuGridO /> 사진 모두 보기

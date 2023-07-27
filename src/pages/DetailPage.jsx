@@ -1,5 +1,6 @@
 import * as S from "../style/Detail/DetailPage";
 
+import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { getRoomsDetail } from "../axios/api";
 
@@ -13,7 +14,11 @@ import OrderBox from "../components/Detail/OrderBox";
 import PlaceLocation from "../components/Detail/PlaceLocation";
 
 function DetailPage() {
-    const { isLoading, isError, data } = useQuery("post", () => getRoomsDetail(2));
+    const param = useParams();
+    const roomId = param.roomId;
+    console.log(roomId);
+
+    const { isLoading, isError, data } = useQuery("post", () => getRoomsDetail(roomId));
 
     if (isLoading) {
         return <p>로딩중.....</p>;
@@ -23,16 +28,17 @@ function DetailPage() {
         return <p>오류가 발생하였습니다...!</p>;
     }
 
-    // console.log("data", data);
-
+    console.log(data);
     return (
         <>
             <TopBar />
             <DetailHeader />
             <S.DetailPage>
                 <Title
+                    roomId={data.roomId}
                     title={data.title}
                     address={data.address}
+                    isWishList={data.isWishList}
                 />
                 <ImageLists roomPictures={data.roomPictures} />
                 <div className="information">
@@ -45,7 +51,7 @@ function DetailPage() {
                     />
                     <OrderBox price={data.price} />
                 </div>
-                <CommentsBox />
+                <CommentsBox roomId={data.roomId} />
                 <PlaceLocation />
             </S.DetailPage>
         </>
@@ -53,46 +59,3 @@ function DetailPage() {
 }
 
 export default DetailPage;
-
-// address
-// :
-// "dasdsd"
-// content
-// :
-// "내용"
-// createdAt
-// :
-// "2023-07-26 17:57"
-// isWishList
-// :
-// false
-// maxPeople
-// :
-// 3
-// modifiedAt
-// :
-// "2023-07-26 17:57"
-// price
-// :
-// 50000
-// roomId
-// :
-// 1
-// roomPictures
-// :
-// (3) ['https://abnb-clone-project.s3.ap-northeast-2.amazo…/roomPicture/ea5a6529-4dca-4538-97fe-c5c5598a0d57', 'https://abnb-clone-project.s3.ap-northeast-2.amazo…/roomPicture/7e49649b-25b5-46d1-9301-4e3ec15f2f82', 'https://abnb-clone-project.s3.ap-northeast-2.amazo…/roomPicture/217fb595-64eb-49a2-9482-9ef6ff374bca']
-// theme
-// :
-// "오션뷰"
-// title
-// :
-// "RDS에 작성"
-// userId
-// :
-// 1
-// userName
-// :
-// "tester"
-// userProfilePicture
-// :
-// null

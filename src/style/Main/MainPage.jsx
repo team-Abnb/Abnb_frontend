@@ -380,6 +380,12 @@ export const FilterBtn = styled.button`
 `;
 
 // RoomCard.jsx
+export const CardContainer = styled.div`
+    max-width: 1278px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+`;
 
 export const RoomCards = styled.div`
     display: flex;

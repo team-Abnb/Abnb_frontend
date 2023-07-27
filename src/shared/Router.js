@@ -21,7 +21,7 @@ export default function Router() {
                         element={<RoomsAdd />}
                     />
                     <Route
-                        path="/detailpage/:id"
+                        path="/detailpage/:roomId"
                         element={<DetailPage />}
                     />
                 </Routes>

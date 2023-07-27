@@ -1,36 +1,25 @@
-import Topbar from '../components/main/Topbar';
-import RoomCard from '../components/main/RoomCard';
-import { useQuery } from 'react-query';
-import { getRoomPosts } from '../axios/api';
-import React, { useState, useEffect } from 'react';
-import * as S from '../style/Main/MainPage';
-import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
-import castle from '../images/castle.jpeg';
-import hot from '../images/hot.jpeg';
-import korean from '../images/korean.jpeg';
-import pool from '../images/pool.jpeg';
-import tropical from '../images/tropical.jpeg';
+import Topbar from "../components/main/Topbar";
+import RoomCard from "../components/main/RoomCard";
+import { useQuery } from "react-query";
+import { getRoomPosts } from "../axios/api";
+import React, { useState, useEffect } from "react";
+import * as S from "../style/Main/MainPage";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import castle from "../images/castle.jpeg";
+import hot from "../images/hot.jpeg";
+import korean from "../images/korean.jpeg";
+import pool from "../images/pool.jpeg";
+import tropical from "../images/tropical.jpeg";
 
 function Main() {
-    const [selectedTheme, setSelectedTheme] = useState('한옥');
-    const { isLoading, isError, data, refetch } = useQuery(['post', selectedTheme], () => getRoomPosts(selectedTheme));
+    const [selectedTheme, setSelectedTheme] = useState("인기 급상승");
+    const { isLoading, isError, data, refetch } = useQuery(["post", selectedTheme], () => getRoomPosts(selectedTheme));
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Id가 변경될 때마다 useQuery를 다시 호출하도록 함
         refetch();
     }, [selectedTheme]);
-
-    // useEffect(() => {
-    //     console.log('selectedTheme:', selectedTheme);
-    //     if (!isLoading && data) {
-    //         console.log(
-    //             'Filtered data:',
-    //             data.filter(item => item.theme === selectedTheme),
-    //         );
-    //     }
-    // }, [selectedTheme, isLoading, data]);
 
     if (isLoading) {
         return <p>로딩중.....</p>;
@@ -40,15 +29,14 @@ function Main() {
         return <p>오류가 발생하였습니다...!</p>;
     }
 
-    console.log('data', data);
+    // console.log("data", data);
 
-    const handleThemeBtnClick = themeName => {
+    const handleThemeBtnClick = (themeName) => {
         setSelectedTheme(themeName);
     };
 
-    const handleBoxClick = itemId => {
-        // 아이템 ID를 링크의 뒤에 붙여서 특정 페이지로 이동
-        navigate(`/detailpage/${itemId}`);
+    const handleBoxClick = (roomId) => {
+        navigate(`/detailpage/${roomId}`);
     };
 
     return (
@@ -56,33 +44,48 @@ function Main() {
             <Topbar />
             <>
                 <S.RoomTypeContainer>
-                    <S.ThemeBtn onClick={() => handleThemeBtnClick('인기 급상승')}>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("인기 급상승")}>
                         <div>
-                            <img src={hot} alt="테마별 장소" />
+                            <img
+                                src={hot}
+                                alt="테마별 장소"
+                            />
                             <S.ThemeName>인기 급상승</S.ThemeName>
                         </div>
                     </S.ThemeBtn>
-                    <S.ThemeBtn onClick={() => handleThemeBtnClick('한옥')}>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("한옥")}>
                         <div>
-                            <img src={korean} alt="테마별 장소" />
+                            <img
+                                src={korean}
+                                alt="테마별 장소"
+                            />
                             <S.ThemeName>한옥</S.ThemeName>
                         </div>
                     </S.ThemeBtn>
-                    <S.ThemeBtn onClick={() => handleThemeBtnClick('캐슬')}>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("캐슬")}>
                         <div>
-                            <img src={castle} alt="테마별 장소" />
+                            <img
+                                src={castle}
+                                alt="테마별 장소"
+                            />
                             <S.ThemeName>캐슬</S.ThemeName>
                         </div>
                     </S.ThemeBtn>
-                    <S.ThemeBtn onClick={() => handleThemeBtnClick('오션뷰')}>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("오션뷰")}>
                         <div>
-                            <img src={pool} alt="테마별 장소" />
+                            <img
+                                src={pool}
+                                alt="테마별 장소"
+                            />
                             <S.ThemeName>오션뷰</S.ThemeName>
                         </div>
                     </S.ThemeBtn>
-                    <S.ThemeBtn onClick={() => handleThemeBtnClick('열대 지역')}>
+                    <S.ThemeBtn onClick={() => handleThemeBtnClick("열대 지역")}>
                         <div>
-                            <img src={tropical} alt="테마별 장소" />
+                            <img
+                                src={tropical}
+                                alt="테마별 장소"
+                            />
                             <S.ThemeName>열대 지역</S.ThemeName>
                         </div>
                     </S.ThemeBtn>
@@ -95,24 +98,20 @@ function Main() {
                     </S.FilterDiv>
                 </S.RoomTypeContainer>
             </>
-            <StCardContainer>
+            <S.CardContainer>
                 {data
-                    .filter(item => item.theme === selectedTheme)
-                    .map(item => (
+                    .filter((item) => item.theme === selectedTheme)
+                    .map((item) => (
                         <div onClick={() => handleBoxClick(item.roomId)}>
-                            <RoomCard key={item.roomId} item={item} />
+                            <RoomCard
+                                key={item.roomId}
+                                item={item}
+                            />
                         </div>
                     ))}
-            </StCardContainer>
+            </S.CardContainer>
         </>
     );
 }
 
 export default Main;
-
-const StCardContainer = styled.div`
-    max-width: 1278px;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 auto;
-`;

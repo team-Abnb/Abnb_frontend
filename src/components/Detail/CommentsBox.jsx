@@ -5,7 +5,8 @@ import CommentListModal from "../common/Modal/CommentListModal";
 import { getComments } from "../../axios/api";
 import { useQuery } from "react-query";
 
-function CommentsBox() {
+function CommentsBox({ roomId }) {
+    console.log(roomId);
     const [commentModal, setCommentModal] = useState(false);
 
     const CommentClickHandler = () => {
@@ -13,7 +14,7 @@ function CommentsBox() {
         document.body.style.overflow = "hidden";
     };
 
-    const { isLoading, isError, data } = useQuery("get", () => getComments(2));
+    const { isLoading, isError, data } = useQuery("get", () => getComments(roomId));
 
     if (isLoading) {
         return <p>로딩중.....</p>;
