@@ -59,7 +59,7 @@ const login = async loginInformation => {
 const createRoom = async savedData => {
     const response = await instance.post(`/api/rooms`, savedData);
     console.log('숙소등록', response);
-    const token = response.headers.accesstoken;
+    const token = localStorage.getItem('token');
     localStorage.getItem('token', token);
     return response.data;
 };
@@ -71,18 +71,18 @@ const getRoomPosts = async id => {
 };
 
 // 상세 숙소 조회
-const getRoomsDetail = async (roomId) => {
+const getRoomsDetail = async roomId => {
     const response = await instance.get(`/api/rooms/${roomId}`);
     return response.data;
 };
 
 // 댓글 조회
-const getComments = async (roomId) => {
+const getComments = async roomId => {
     const response = await instance.get(`/api/rooms/${roomId}/comments`);
     return response.data;
 };
 
-export { addUsers, login, getRoomPosts, getRoomsDetail, getComments };
+export { addUsers, login, getRoomPosts, getRoomsDetail, getComments, createRoom };
 
 // get 일때 사용
 // const { isLoading, isError, data } = useQuery("post", () => getRoomPosts(pluspage));
