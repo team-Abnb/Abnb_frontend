@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useMutation } from "react-query";
 import { postLike } from "../../axios/api";
 import { FiShare } from "react-icons/fi";
