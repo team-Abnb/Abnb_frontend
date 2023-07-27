@@ -5,7 +5,7 @@ import { getRoomPosts } from '../axios/api';
 import React, { useState, useEffect } from 'react';
 import * as S from '../style/Main/MainPage';
 import styled from 'styled-components';
-
+import { useNavigate } from 'react-router-dom';
 import castle from '../images/castle.jpeg';
 import hot from '../images/hot.jpeg';
 import korean from '../images/korean.jpeg';
@@ -15,6 +15,7 @@ import tropical from '../images/tropical.jpeg';
 function Main() {
     const [selectedTheme, setSelectedTheme] = useState('한옥');
     const { isLoading, isError, data, refetch } = useQuery(['post', selectedTheme], () => getRoomPosts(selectedTheme));
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Id가 변경될 때마다 useQuery를 다시 호출하도록 함
@@ -43,6 +44,11 @@ function Main() {
 
     const handleThemeBtnClick = themeName => {
         setSelectedTheme(themeName);
+    };
+
+    const handleBoxClick = itemId => {
+        // 아이템 ID를 링크의 뒤에 붙여서 특정 페이지로 이동
+        navigate(`/detailpage/${itemId}`);
     };
 
     return (
@@ -93,7 +99,9 @@ function Main() {
                 {data
                     .filter(item => item.theme === selectedTheme)
                     .map(item => (
-                        <RoomCard key={item.roomId} item={item} />
+                        <div onClick={() => handleBoxClick(item.roomId)}>
+                            <RoomCard key={item.roomId} item={item} />
+                        </div>
                     ))}
             </StCardContainer>
         </>
