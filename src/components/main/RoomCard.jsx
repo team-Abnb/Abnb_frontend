@@ -33,7 +33,7 @@ function RoomCard({ item }) {
                 </S.RoomsImage>
                 <h3>{address}</h3>
                 <p>{title}</p>
-                <p>{price}</p>
+                <p>{price}₩</p>
             </S.RoomCard>
         </S.RoomCards>
     );

@@ -1,24 +1,26 @@
 /* eslint-disable no-shadow */
 
-import React, { useState } from 'react';
-import * as S from '../.././../style/Login/UserInfo';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { Divider } from '@mui/material';
-import { useCookies } from 'react-cookie';
+import React, { useState } from "react";
+import * as S from "../.././../style/Login/UserInfo";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { Divider } from "@mui/material";
+import { useCookies } from "react-cookie";
 
-import UserIcon from './UserIcon';
-import UserMenuIcon from './UserMenuIcon';
-import SignUp from '../../signup/SignUp';
-import Login from '../../login/Login';
+import UserIcon from "./UserIcon";
+import UserMenuIcon from "./UserMenuIcon";
+import SignUp from "../../signup/SignUp";
+import Login from "../../login/Login";
 
 function UserInfo() {
     const [signUpOpen, setSignUpOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
     const [anchorEl, setAnchorEl] = React.useState(null);
 
+    const token = localStorage.getItem("token");
+
     // const dispatch = useDispatch();
-    const [cookies, removeCookies] = useCookies(['accessToken']);
+    const [cookies, removeCookies] = useCookies(["accessToken"]);
     const open = Boolean(anchorEl);
 
     function handleSignUpOpen() {
@@ -35,14 +37,14 @@ function UserInfo() {
     function handleLoginClose() {
         setLoginOpen(false);
     }
-    const handleClick = event => {
+    const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
         setAnchorEl(null);
     };
     function logout() {
-        removeCookies('accessToken');
+        removeCookies("accessToken");
         handleClose();
         // dispatch(initRooms());
         //dispatch(initPage());
@@ -52,32 +54,40 @@ function UserInfo() {
             <S.UserInfoDiv>
                 <S.UserInfoBtn
                     id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-controls={open ? "basic-menu" : undefined}
                     aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={event => handleClick(event)}
+                    aria-expanded={open ? "true" : undefined}
+                    onClick={(event) => handleClick(event)}
                 >
                     <UserMenuIcon />
                     <UserIcon />
                 </S.UserInfoBtn>
-                <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                        'aria-labelledby': 'basic-button',
-                    }}
-                >
-                    <MenuItem onClick={cookies.accessToken ? () => logout() : () => handleLoginOpen()}>
-                        {cookies.accessToken ? '로그아웃' : '로그인'}
-                    </MenuItem>
-                    <Divider />
-                    <MenuItem onClick={() => handleSignUpOpen()}>회원가입</MenuItem>
-                </Menu>
+                {!token ? (
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        MenuListProps={{
+                            "aria-labelledby": "basic-button",
+                        }}
+                    >
+                        <MenuItem onClick={cookies.accessToken ? () => logout() : () => handleLoginOpen()}>
+                            {cookies.accessToken ? "로그아웃" : "로그인"}
+                        </MenuItem>
+                        <Divider />
+                        <MenuItem onClick={() => handleSignUpOpen()}>회원가입</MenuItem>
+                    </Menu>
+                ) : null}
             </S.UserInfoDiv>
-            <SignUp open={signUpOpen} handleClose={() => handleSignUpClose()} />
-            <Login open={loginOpen} handleClose={() => handleLoginClose()} />
+            <SignUp
+                open={signUpOpen}
+                handleClose={() => handleSignUpClose()}
+            />
+            <Login
+                open={loginOpen}
+                handleClose={() => handleLoginClose()}
+            />
         </>
     );
 }

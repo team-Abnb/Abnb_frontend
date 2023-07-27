@@ -25,7 +25,16 @@ function Comment({ comment, commentId, createdAt, profilePicture, username }) {
             >
                 더보기
                 <IoIosArrowForward />
-                {commentModal && <CommentListModal setCommentModal={setCommentModal} />}
+                {commentModal && (
+                    <CommentListModal
+                        setCommentModal={setCommentModal}
+                        comment={comment}
+                        commentId={commentId}
+                        createdAt={createdAt}
+                        profilePicture={profilePicture}
+                        username={username}
+                    />
+                )}
             </div>
         </S.Comment>
     );

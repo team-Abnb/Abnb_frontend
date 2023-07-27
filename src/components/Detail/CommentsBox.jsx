@@ -50,6 +50,7 @@ function CommentsBox({ roomId }) {
                             createdAt={modal.createdAt}
                             profilePicture={modal.profilePicture}
                             username={modal.username}
+                            data={data.commentResponseDtos}
                         />
                     ))}
             </S.CommentsBox>
